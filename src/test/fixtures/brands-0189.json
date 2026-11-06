@@ -1,0 +1,110 @@
+{
+  "goods": [
+    {
+      "brand": "ZEN",
+      "count": 4,
+      "goodsID": "EBC80534-6DBB-4E7A-8DE1-87EE5691C042",
+      "name": "Бендикс",
+      "number": "0189",
+      "price": 1032,
+      "rate": 1,
+      "warehouses": [
+        {
+          "code": "МСК РС",
+          "id": "2EFE9FEB-6638-11F0-A7F8-D4F468C486F9",
+          "own": false,
+          "price": 1032,
+          "shipmentDate": "2026-11-09T15:30:00+03:00",
+          "stock": 4,
+          "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+        }
+      ]
+    },
+    {
+      "brand": "NGK/NTK",
+      "count": 0,
+      "goodsID": "74E7ABE5-14D4-439D-9E87-4E7F18FF0C6C",
+      "name": "Лямбда-зонд",
+      "number": "0189",
+      "price": 0,
+      "rate": 1,
+      "warehouses": []
+    },
+    {
+      "brand": "CAFFARO",
+      "count": 16,
+      "goodsID": "9769C10C-5401-4C55-B79B-583774FA9642",
+      "name": "Ролик п/клин. ремня",
+      "number": "01-89",
+      "price": 866.4,
+      "rate": 1,
+      "warehouses": [
+        {
+          "code": "МСК РС",
+          "id": "36CF7007-66EB-11F0-A7F8-D4F468C486F9",
+          "own": false,
+          "price": 866.4,
+          "shipmentDate": "2026-11-10T07:30:00+03:00",
+          "stock": 1,
+          "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+        },
+        {
+          "code": "МСК РС",
+          "id": "F54C8DC3-D1E1-11F0-A80D-9011D1D0CCF5",
+          "own": false,
+          "price": 866.4,
+          "shipmentDate": "2026-11-11T15:30:00+03:00",
+          "stock": 3,
+          "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+        },
+        {
+          "code": "МСК РС",
+          "id": "575A0258-60A3-11F0-A7F7-FEFBE46398F2",
+          "own": false,
+          "price": 548.4,
+          "shipmentDate": "2026-11-12T14:30:00+03:00",
+          "stock": 1,
+          "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+        },
+        {
+          "code": "МСК РС",
+          "id": "BFB2C1B5-66EA-11F0-A7F8-D4F468C486F9",
+          "own": false,
+          "price": 866.4,
+          "shipmentDate": "2026-11-11T15:30:00+03:00",
+          "stock": 10,
+          "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+        },
+        {
+          "code": "СПБ РС",
+          "id": "137897D8-399C-11F1-AA2E-6CFE543051E4",
+          "own": false,
+          "price": 548.4,
+          "shipmentDate": "2026-11-12T14:30:00+03:00",
+          "stock": 1,
+          "warehouseShipping": "29107E16-1EA5-11F1-AA2A-6CFE543051E5"
+        }
+      ]
+    },
+    {
+      "brand": "HAFFEN",
+      "count": 2,
+      "goodsID": "B4E2B46A-DCE9-47E4-BF3B-4F732510F7FC",
+      "name": "Шестерня распределительного вала ISF 3.8, ISBe 3955152",
+      "number": "0189",
+      "price": 6324,
+      "rate": 1,
+      "warehouses": [
+        {
+          "code": "МСК РС",
+          "id": "05EA410A-5D9C-11F0-A7F6-DC72C0A5052E",
+          "own": false,
+          "price": 6324,
+          "shipmentDate": "2026-11-11T08:30:00+03:00",
+          "stock": 2,
+          "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+        }
+      ]
+    }
+  ]
+}

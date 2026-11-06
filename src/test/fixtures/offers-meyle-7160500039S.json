@@ -1,0 +1,1059 @@
+{
+  "goods": [
+    {
+      "analogues": [
+        {
+          "brand": "RTS",
+          "brand_quality": false,
+          "count": 184,
+          "defect": false,
+          "goodsID": "348C82F4-B26B-4159-A982-86DA740BE90A",
+          "name": "Рычаг подвески",
+          "notRefund": false,
+          "number": "95-07069",
+          "price": 1689.6,
+          "rate": 1,
+          "sale": [
+            "favorit-servis-nov-26-3",
+            "favorit-servis-nov-26-4",
+            "favorit-servis-nov-26-5",
+            "favorit-servis-nov-26-6",
+            "favorit-servis-nov-26-7",
+            "favorit-servis-nov-26-8",
+            "favorit-servis-nov-26-9",
+            "favorit-servis-nov-26-10",
+            "favorit-servis-nov-26-h2o"
+          ],
+          "warehouses": [
+            {
+              "code": "МСК РС",
+              "id": "7095FC0A-6610-11F0-A7F8-D4F468C486F9",
+              "notRefund": false,
+              "own": false,
+              "price": 1482,
+              "shipmentDate": "2026-11-09T13:50:00+03:00",
+              "stock": 12,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "СПБ",
+              "id": "49BE7207-1EDD-11F1-AA2A-6CFE543051E5",
+              "notRefund": false,
+              "own": true,
+              "price": 1482,
+              "shipmentDate": "2026-11-09T18:00:00+03:00",
+              "stock": 1,
+              "warehouseShipping": "29107E16-1EA5-11F1-AA2A-6CFE543051E5"
+            },
+            {
+              "code": "ЯРС РС",
+              "id": "BE5F5B62-8E55-11EC-A7B3-00155D1F6C08",
+              "notRefund": false,
+              "own": false,
+              "price": 1482,
+              "shipmentDate": "2026-11-12T16:20:00+03:00",
+              "stock": 12,
+              "warehouseShipping": "C5502880-D8DE-11ED-A7C3-00155D1F6C08"
+            },
+            {
+              "code": "МСК РС",
+              "id": "BAA57458-63D3-11F0-A7F7-FEFBE46398F2",
+              "notRefund": false,
+              "own": false,
+              "price": 1482,
+              "shipmentDate": "2026-11-09T08:20:00+03:00",
+              "stock": 1,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "НН РС",
+              "id": "46F93BA2-DDAC-11EC-A7B5-00155D1F6C08",
+              "notRefund": false,
+              "own": false,
+              "price": 1482,
+              "shipmentDate": "2026-11-12T14:10:00+03:00",
+              "stock": 1,
+              "warehouseShipping": "41A5DBC3-1384-11EF-A7D5-D7E337AD9FE5"
+            },
+            {
+              "code": "МСК РС",
+              "id": "FE2667A1-63A3-11F0-A7F7-FEFBE46398F2",
+              "notRefund": false,
+              "own": false,
+              "price": 1760.4,
+              "shipmentDate": "2026-11-10T16:30:00+03:00",
+              "stock": 5,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "МСК РС",
+              "id": "FAD5CE30-62FC-11F0-A7F7-FEFBE46398F2",
+              "notRefund": false,
+              "own": false,
+              "price": 1482,
+              "shipmentDate": "2026-11-10T12:40:00+03:00",
+              "stock": 1,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "СПБ РС",
+              "id": "88A4689A-397B-11F1-AA2E-6CFE543051E4",
+              "notRefund": false,
+              "own": false,
+              "price": 1689.6,
+              "shipmentDate": "2026-11-11T12:40:00+03:00",
+              "stock": 2,
+              "warehouseShipping": "29107E16-1EA5-11F1-AA2A-6CFE543051E5"
+            },
+            {
+              "code": "ДМД",
+              "id": "9FB93976-798B-11EF-A7DE-F0A13A39C8A2",
+              "notRefund": false,
+              "own": true,
+              "price": 1482,
+              "shipmentDate": "2026-11-09T20:00:00+03:00",
+              "stock": 20,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "МСК РС",
+              "id": "828D8BBA-63BC-11F0-A7F7-FEFBE46398F2",
+              "notRefund": false,
+              "own": false,
+              "price": 1482,
+              "shipmentDate": "2026-11-11T12:20:00+03:00",
+              "stock": 10,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "МСК РС",
+              "id": "940F8836-744E-11F1-AA2E-6CFE543051E4",
+              "notRefund": false,
+              "own": false,
+              "price": 1760.4,
+              "shipmentDate": "2026-11-11T15:40:00+03:00",
+              "stock": 20,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "МСК РС",
+              "id": "05EA410A-5D9C-11F0-A7F6-DC72C0A5052E",
+              "notRefund": false,
+              "own": false,
+              "price": 1939.2,
+              "shipmentDate": "2026-11-11T08:30:00+03:00",
+              "stock": 1,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "ВРН РС",
+              "id": "80F28324-E84B-11EE-A7D0-F0FED951D48A",
+              "notRefund": false,
+              "own": false,
+              "price": 1482,
+              "shipmentDate": "2026-11-11T12:20:00+03:00",
+              "stock": 6,
+              "warehouseShipping": "55F58941-572F-11EC-A36C-005056802F4C"
+            },
+            {
+              "code": "МСК РС",
+              "id": "FE3BFF6B-107C-11EC-A360-005056802F4C",
+              "notRefund": false,
+              "own": false,
+              "price": 1482,
+              "shipmentDate": "2026-11-11T15:40:00+03:00",
+              "stock": 20,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "КРН РС",
+              "id": "53294648-D5B2-11EB-A35C-005056802F4C",
+              "notRefund": false,
+              "own": false,
+              "price": 1482,
+              "shipmentDate": "2026-11-14T16:30:00+03:00",
+              "stock": 12,
+              "warehouseShipping": "63E28567-1AD5-11E8-813C-0050568E1762"
+            },
+            {
+              "code": "ВРН РС",
+              "id": "566AEE2E-D33E-11EB-A35C-005056802F4C",
+              "notRefund": false,
+              "own": false,
+              "price": 1482,
+              "shipmentDate": "2026-11-09T12:30:00+03:00",
+              "stock": 1,
+              "warehouseShipping": "55F58941-572F-11EC-A36C-005056802F4C"
+            },
+            {
+              "code": "МСК РС",
+              "id": "7E089F31-5658-11F0-A7F5-84FE3E0FDBAD",
+              "notRefund": false,
+              "own": false,
+              "price": 1760.4,
+              "shipmentDate": "2026-11-13T13:10:00+03:00",
+              "stock": 2,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "СПБ РС",
+              "id": "BE3A436E-D5C3-11EC-A7B5-00155D1F6C08",
+              "notRefund": false,
+              "own": false,
+              "price": 1689.6,
+              "shipmentDate": "2026-11-09T11:30:00+03:00",
+              "stock": 5,
+              "warehouseShipping": "29107E16-1EA5-11F1-AA2A-6CFE543051E5"
+            },
+            {
+              "code": "РНД РС",
+              "id": "0576464B-FF88-11E8-A2C4-005056802F4C",
+              "notRefund": false,
+              "own": false,
+              "price": 1482,
+              "shipmentDate": "2026-11-12T13:10:00+03:00",
+              "stock": 2,
+              "warehouseShipping": "1A96D570-D0B7-11EE-A7D0-F0FED951D48A"
+            },
+            {
+              "code": "МСК РС",
+              "id": "E20ED1D7-63D2-11F0-A7F7-FEFBE46398F2",
+              "notRefund": false,
+              "own": false,
+              "price": 1482,
+              "shipmentDate": "2026-11-09T13:30:00+03:00",
+              "stock": 10,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "МСК РС",
+              "id": "A1277DFB-63D0-11F0-A7F7-FEFBE46398F2",
+              "notRefund": false,
+              "own": false,
+              "price": 1760.4,
+              "shipmentDate": "2026-11-11T15:10:00+03:00",
+              "stock": 4,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "КРН РС",
+              "id": "CED92869-C783-11EB-A35B-005056802F4C",
+              "notRefund": false,
+              "own": false,
+              "price": 1482,
+              "shipmentDate": "2026-11-13T14:00:00+03:00",
+              "stock": 3,
+              "warehouseShipping": "63E28567-1AD5-11E8-813C-0050568E1762"
+            },
+            {
+              "code": "МСК РС",
+              "id": "F54C8DC3-D1E1-11F0-A80D-9011D1D0CCF5",
+              "notRefund": true,
+              "own": false,
+              "price": 1760.4,
+              "shipmentDate": "2026-11-11T15:30:00+03:00",
+              "stock": 10,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "КРН РС",
+              "id": "E1E07E12-77EC-11E9-A2D6-005056802F4C",
+              "notRefund": false,
+              "own": false,
+              "price": 1482,
+              "shipmentDate": "2026-11-12T09:40:00+03:00",
+              "stock": 1,
+              "warehouseShipping": "63E28567-1AD5-11E8-813C-0050568E1762"
+            },
+            {
+              "code": "НН",
+              "id": "AAA1D7D7-37A5-11EF-A7D6-8DAB4C289914",
+              "notRefund": false,
+              "own": true,
+              "price": 1482,
+              "shipmentDate": "2026-11-10T20:00:00+03:00",
+              "stock": 2,
+              "warehouseShipping": "41A5DBC3-1384-11EF-A7D5-D7E337AD9FE5"
+            },
+            {
+              "code": "СПБ РС",
+              "id": "DB1F1AC9-39A8-11F1-AA2E-6CFE543051E4",
+              "notRefund": false,
+              "own": false,
+              "price": 1482,
+              "shipmentDate": "2026-11-12T13:30:00+03:00",
+              "stock": 10,
+              "warehouseShipping": "29107E16-1EA5-11F1-AA2A-6CFE543051E5"
+            },
+            {
+              "code": "МСК РС",
+              "id": "076D9436-5B24-11F0-A7F6-DC72C0A5052E",
+              "notRefund": false,
+              "own": false,
+              "price": 1482,
+              "shipmentDate": "2026-11-11T13:30:00+03:00",
+              "stock": 10,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            }
+          ]
+        },
+        {
+          "brand": "SUFIX",
+          "brand_quality": false,
+          "count": 287,
+          "defect": false,
+          "goodsID": "481F303D-35DD-4264-A0A2-4A937764DB5F",
+          "name": "Рычаг нижний задней подвески",
+          "notRefund": false,
+          "number": "SH-1830",
+          "price": 2537.64,
+          "rate": 1,
+          "sale": [
+            "favorit-servis-nov-26-3",
+            "favorit-servis-nov-26-4",
+            "favorit-servis-nov-26-5",
+            "favorit-servis-nov-26-6",
+            "favorit-servis-nov-26-7",
+            "favorit-servis-nov-26-8",
+            "favorit-servis-nov-26-9",
+            "favorit-servis-nov-26-10",
+            "favorit-servis-nov-26-h2o"
+          ],
+          "warehouses": [
+            {
+              "code": "СПБ РС",
+              "id": "DB1F1AC9-39A8-11F1-AA2E-6CFE543051E4",
+              "notRefund": false,
+              "own": false,
+              "price": 3111,
+              "shipmentDate": "2026-11-12T13:30:00+03:00",
+              "stock": 4,
+              "warehouseShipping": "29107E16-1EA5-11F1-AA2A-6CFE543051E5"
+            },
+            {
+              "code": "НН РС",
+              "id": "59F723B8-646A-11EA-A318-005056802F4C",
+              "notRefund": false,
+              "own": false,
+              "price": 2732.25,
+              "shipmentDate": "2026-11-10T04:50:00+03:00",
+              "stock": 8,
+              "warehouseShipping": "41A5DBC3-1384-11EF-A7D5-D7E337AD9FE5"
+            },
+            {
+              "code": "НН РС",
+              "id": "6CD28DC1-2E80-11ED-A7B8-00155D1F6C08",
+              "notRefund": false,
+              "own": false,
+              "price": 2537.64,
+              "shipmentDate": "2026-11-10T15:30:00+03:00",
+              "stock": 13,
+              "warehouseShipping": "41A5DBC3-1384-11EF-A7D5-D7E337AD9FE5"
+            },
+            {
+              "code": "ВРН РС",
+              "id": "5C96756C-4E3E-11EF-A7D6-8DAB4C289914",
+              "notRefund": false,
+              "own": false,
+              "price": 4011.6,
+              "shipmentDate": "2026-11-12T11:30:00+03:00",
+              "stock": 11,
+              "warehouseShipping": "55F58941-572F-11EC-A36C-005056802F4C"
+            },
+            {
+              "code": "МСК РС",
+              "id": "0785B7ED-63C2-11F0-A7F7-FEFBE46398F2",
+              "notRefund": false,
+              "own": false,
+              "price": 2732.2,
+              "shipmentDate": "2026-11-12T16:30:00+03:00",
+              "stock": 1,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "РНД РС",
+              "id": "9D689C48-7B4B-11EB-A349-005056802F4C",
+              "notRefund": false,
+              "own": false,
+              "price": 2732.2,
+              "shipmentDate": "2026-11-12T13:40:00+03:00",
+              "stock": 1,
+              "warehouseShipping": "1A96D570-D0B7-11EE-A7D0-F0FED951D48A"
+            },
+            {
+              "code": "МСК РС",
+              "id": "3EFBCFCF-63D4-11F0-A7F7-FEFBE46398F2",
+              "notRefund": false,
+              "own": false,
+              "price": 2732.2,
+              "shipmentDate": "2026-11-11T14:10:00+03:00",
+              "stock": 2,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "МСК РС",
+              "id": "7E089F31-5658-11F0-A7F5-84FE3E0FDBAD",
+              "notRefund": false,
+              "own": false,
+              "price": 4120.8,
+              "shipmentDate": "2026-11-13T13:10:00+03:00",
+              "stock": 4,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "ВРН",
+              "id": "6B7750D5-7D13-11EC-A370-005056802F4C",
+              "notRefund": false,
+              "own": true,
+              "price": 2427,
+              "shipmentDate": "2026-11-09T20:00:00+03:00",
+              "stock": 5,
+              "warehouseShipping": "55F58941-572F-11EC-A36C-005056802F4C"
+            },
+            {
+              "code": "КРН РС",
+              "id": "09DB2452-C531-11EB-A35A-005056802F4C",
+              "notRefund": false,
+              "own": false,
+              "price": 2537.64,
+              "shipmentDate": "2026-11-12T11:10:00+03:00",
+              "stock": 8,
+              "warehouseShipping": "63E28567-1AD5-11E8-813C-0050568E1762"
+            },
+            {
+              "code": "СПБ РС",
+              "id": "60A00030-3A30-11F1-AA2E-6CFE543051E4",
+              "notRefund": false,
+              "own": false,
+              "price": 2732.25,
+              "shipmentDate": "2026-11-09T12:30:00+03:00",
+              "stock": 4,
+              "warehouseShipping": "29107E16-1EA5-11F1-AA2A-6CFE543051E5"
+            },
+            {
+              "code": "РНД РС",
+              "id": "F69D65EB-45CA-11EF-A7D6-8DAB4C289914",
+              "notRefund": false,
+              "own": false,
+              "price": 2537.64,
+              "shipmentDate": "2026-11-10T12:40:00+03:00",
+              "stock": 13,
+              "warehouseShipping": "1A96D570-D0B7-11EE-A7D0-F0FED951D48A"
+            },
+            {
+              "code": "ЯРС РС",
+              "id": "CA65A95A-329E-11EE-A7C6-00155D1F6C08",
+              "notRefund": false,
+              "own": false,
+              "price": 2537.64,
+              "shipmentDate": "2026-11-10T16:30:00+03:00",
+              "stock": 50,
+              "warehouseShipping": "C5502880-D8DE-11ED-A7C3-00155D1F6C08"
+            },
+            {
+              "code": "ВРН РС",
+              "id": "CCA697A5-F534-11F0-AA2A-6CFE543051E5",
+              "notRefund": false,
+              "own": false,
+              "price": 2732.25,
+              "shipmentDate": "2026-11-12T16:00:00+03:00",
+              "stock": 1,
+              "warehouseShipping": "55F58941-572F-11EC-A36C-005056802F4C"
+            },
+            {
+              "code": "МСК РС",
+              "id": "71EDEB25-5659-11F0-A7F5-84FE3E0FDBAD",
+              "notRefund": false,
+              "own": false,
+              "price": 3986.4,
+              "shipmentDate": "2026-11-14T13:10:00+03:00",
+              "stock": 10,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "МСК РС",
+              "id": "7095FC0A-6610-11F0-A7F8-D4F468C486F9",
+              "notRefund": false,
+              "own": false,
+              "price": 2732.25,
+              "shipmentDate": "2026-11-09T13:50:00+03:00",
+              "stock": 5,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "РНД",
+              "id": "C06817A4-E6A7-11EE-A7D0-F0FED951D48A",
+              "notRefund": false,
+              "own": true,
+              "price": 2427,
+              "shipmentDate": "2026-11-10T20:00:00+03:00",
+              "stock": 1,
+              "warehouseShipping": "1A96D570-D0B7-11EE-A7D0-F0FED951D48A"
+            },
+            {
+              "code": "КРН РС",
+              "id": "53294648-D5B2-11EB-A35C-005056802F4C",
+              "notRefund": false,
+              "own": false,
+              "price": 2732.25,
+              "shipmentDate": "2026-11-14T16:30:00+03:00",
+              "stock": 5,
+              "warehouseShipping": "63E28567-1AD5-11E8-813C-0050568E1762"
+            },
+            {
+              "code": "ВРН РС",
+              "id": "566AEE2E-D33E-11EB-A35C-005056802F4C",
+              "notRefund": false,
+              "own": false,
+              "price": 2732.25,
+              "shipmentDate": "2026-11-09T12:30:00+03:00",
+              "stock": 2,
+              "warehouseShipping": "55F58941-572F-11EC-A36C-005056802F4C"
+            },
+            {
+              "code": "МСК РС",
+              "id": "469249CA-6311-11F0-A7F7-FEFBE46398F2",
+              "notRefund": false,
+              "own": false,
+              "price": 2537.64,
+              "shipmentDate": "2026-11-09T14:40:00+03:00",
+              "stock": 80,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "МСК РС",
+              "id": "09031FFB-565A-11F0-A7F5-84FE3E0FDBAD",
+              "notRefund": false,
+              "own": false,
+              "price": 4177.2,
+              "shipmentDate": "2026-11-11T05:40:00+03:00",
+              "stock": 2,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "МСК РС",
+              "id": "F48D5279-21F0-11EC-A361-005056802F4C",
+              "notRefund": false,
+              "own": false,
+              "price": 3314.36,
+              "shipmentDate": "2026-11-12T13:30:00+03:00",
+              "stock": 4,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "СПБ РС",
+              "id": "889F78B1-84EF-11F1-AA2E-6CFE543051E4",
+              "notRefund": false,
+              "own": false,
+              "price": 2732.2,
+              "shipmentDate": "2026-11-11T13:40:00+03:00",
+              "stock": 2,
+              "warehouseShipping": "29107E16-1EA5-11F1-AA2A-6CFE543051E5"
+            },
+            {
+              "code": "МСК РС",
+              "id": "F54C8DC3-D1E1-11F0-A80D-9011D1D0CCF5",
+              "notRefund": true,
+              "own": false,
+              "price": 3229.2,
+              "shipmentDate": "2026-11-11T15:30:00+03:00",
+              "stock": 15,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "МСК РС",
+              "id": "828D8BBA-63BC-11F0-A7F7-FEFBE46398F2",
+              "notRefund": false,
+              "own": false,
+              "price": 3085.31,
+              "shipmentDate": "2026-11-11T12:20:00+03:00",
+              "stock": 4,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "ЯРС",
+              "id": "4E0B5D27-D911-11ED-A7C3-00155D1F6C08",
+              "notRefund": false,
+              "own": true,
+              "price": 2427,
+              "shipmentDate": "2026-11-10T20:00:00+03:00",
+              "stock": 4,
+              "warehouseShipping": "C5502880-D8DE-11ED-A7C3-00155D1F6C08"
+            },
+            {
+              "code": "НН РС",
+              "id": "5B3C46C0-AE66-11F0-A806-A4C3AE812057",
+              "notRefund": false,
+              "own": false,
+              "price": 2773.2,
+              "shipmentDate": "2026-11-12T09:40:00+03:00",
+              "stock": 1,
+              "warehouseShipping": "41A5DBC3-1384-11EF-A7D5-D7E337AD9FE5"
+            },
+            {
+              "code": "МСК РС",
+              "id": "88516F70-63B6-11F0-A7F7-FEFBE46398F2",
+              "notRefund": false,
+              "own": false,
+              "price": 3314.36,
+              "shipmentDate": "2026-11-10T12:10:00+03:00",
+              "stock": 3,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "РНД РС",
+              "id": "804F7D23-112B-11EF-A7D5-D7E337AD9FE5",
+              "notRefund": false,
+              "own": false,
+              "price": 2732.2,
+              "shipmentDate": "2026-11-10T10:40:00+03:00",
+              "stock": 1,
+              "warehouseShipping": "1A96D570-D0B7-11EE-A7D0-F0FED951D48A"
+            },
+            {
+              "code": "ЯРС РС",
+              "id": "4244B27D-6E77-11EE-A7CA-00155D1F6C08",
+              "notRefund": false,
+              "own": false,
+              "price": 2732.25,
+              "shipmentDate": "2026-11-11T12:30:00+03:00",
+              "stock": 3,
+              "warehouseShipping": "C5502880-D8DE-11ED-A7C3-00155D1F6C08"
+            },
+            {
+              "code": "КРН РС",
+              "id": "310F0721-A114-11EB-A350-005056802F4C",
+              "notRefund": false,
+              "own": false,
+              "price": 2732.2,
+              "shipmentDate": "2026-11-12T10:40:00+03:00",
+              "stock": 1,
+              "warehouseShipping": "63E28567-1AD5-11E8-813C-0050568E1762"
+            },
+            {
+              "code": "ЯРС РС",
+              "id": "BE5F5B62-8E55-11EC-A7B3-00155D1F6C08",
+              "notRefund": false,
+              "own": false,
+              "price": 2732.25,
+              "shipmentDate": "2026-11-12T16:20:00+03:00",
+              "stock": 5,
+              "warehouseShipping": "C5502880-D8DE-11ED-A7C3-00155D1F6C08"
+            },
+            {
+              "code": "МСК РС",
+              "id": "C9C9C1B0-661F-11F0-A7F8-D4F468C486F9",
+              "notRefund": false,
+              "own": false,
+              "price": 2912.4,
+              "shipmentDate": "2026-11-09T14:30:00+03:00",
+              "stock": 14,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            }
+          ]
+        },
+        {
+          "brand": "Mapco",
+          "brand_quality": false,
+          "count": 255,
+          "defect": false,
+          "goodsID": "57637BB2-EC41-11DC-9FE4-000E0CE9B9AA",
+          "name": "Рычаг задней подвески верхний",
+          "notRefund": false,
+          "number": "59646",
+          "price": 2271.65,
+          "rate": 1,
+          "sale": [
+            "favorit-servis-nov-26-3",
+            "favorit-servis-nov-26-4",
+            "favorit-servis-nov-26-5",
+            "favorit-servis-nov-26-6",
+            "favorit-servis-nov-26-7",
+            "favorit-servis-nov-26-8",
+            "favorit-servis-nov-26-9",
+            "favorit-servis-nov-26-10",
+            "favorit-servis-nov-26-h2o"
+          ],
+          "warehouses": [
+            {
+              "code": "МСК РС",
+              "id": "71EDEB25-5659-11F0-A7F5-84FE3E0FDBAD",
+              "notRefund": false,
+              "own": false,
+              "price": 3915.6,
+              "shipmentDate": "2026-11-14T13:10:00+03:00",
+              "stock": 2,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "МСК РС",
+              "id": "36CF7007-66EB-11F0-A7F8-D4F468C486F9",
+              "notRefund": false,
+              "own": false,
+              "price": 3164.4,
+              "shipmentDate": "2026-11-10T07:30:00+03:00",
+              "stock": 10,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "РНД РС",
+              "id": "FE12BC1F-7195-11EE-A7CA-00155D1F6C08",
+              "notRefund": false,
+              "own": false,
+              "price": 2823.84,
+              "shipmentDate": "2026-11-12T11:40:00+03:00",
+              "stock": 2,
+              "warehouseShipping": "1A96D570-D0B7-11EE-A7D0-F0FED951D48A"
+            },
+            {
+              "code": "СПБ РС",
+              "id": "88A4689A-397B-11F1-AA2E-6CFE543051E4",
+              "notRefund": false,
+              "own": false,
+              "price": 2823.84,
+              "shipmentDate": "2026-11-11T12:40:00+03:00",
+              "stock": 4,
+              "warehouseShipping": "29107E16-1EA5-11F1-AA2A-6CFE543051E5"
+            },
+            {
+              "code": "МСК РС",
+              "id": "076D9436-5B24-11F0-A7F6-DC72C0A5052E",
+              "notRefund": false,
+              "own": false,
+              "price": 2301.41,
+              "shipmentDate": "2026-11-11T13:30:00+03:00",
+              "stock": 30,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "МСК РС",
+              "id": "FE3BFF6B-107C-11EC-A360-005056802F4C",
+              "notRefund": false,
+              "own": false,
+              "price": 2271.65,
+              "shipmentDate": "2026-11-11T15:40:00+03:00",
+              "stock": 100,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "МСК РС",
+              "id": "7E089F31-5658-11F0-A7F5-84FE3E0FDBAD",
+              "notRefund": false,
+              "own": false,
+              "price": 3919.2,
+              "shipmentDate": "2026-11-13T13:10:00+03:00",
+              "stock": 2,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "МСК РС",
+              "id": "0C941E4A-6605-11F0-A7F8-D4F468C486F9",
+              "notRefund": false,
+              "own": false,
+              "price": 2301.41,
+              "shipmentDate": "2026-11-09T14:45:00+03:00",
+              "stock": 6,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "ВРН РС",
+              "id": "F5AA1CA6-1982-11EE-A7C4-00155D1F6C08",
+              "notRefund": false,
+              "own": false,
+              "price": 2823.84,
+              "shipmentDate": "2026-11-11T11:10:00+03:00",
+              "stock": 2,
+              "warehouseShipping": "55F58941-572F-11EC-A36C-005056802F4C"
+            },
+            {
+              "code": "КРН РС",
+              "id": "9266FFC0-F141-11EC-A7B6-00155D1F6C08",
+              "notRefund": false,
+              "own": false,
+              "price": 2322.92,
+              "shipmentDate": "2026-11-14T13:50:00+03:00",
+              "stock": 6,
+              "warehouseShipping": "63E28567-1AD5-11E8-813C-0050568E1762"
+            },
+            {
+              "code": "МСК РС",
+              "id": "F5BDCCE8-630D-11F0-A7F7-FEFBE46398F2",
+              "notRefund": false,
+              "own": false,
+              "price": 2713.96,
+              "shipmentDate": "2026-11-09T11:50:00+03:00",
+              "stock": 2,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "МСК РС",
+              "id": "F54C8DC3-D1E1-11F0-A80D-9011D1D0CCF5",
+              "notRefund": true,
+              "own": false,
+              "price": 3164.4,
+              "shipmentDate": "2026-11-11T15:30:00+03:00",
+              "stock": 3,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "ЯРС",
+              "id": "4E0B5D27-D911-11ED-A7C3-00155D1F6C08",
+              "notRefund": false,
+              "own": true,
+              "price": 1998.01,
+              "shipmentDate": "2026-11-10T20:00:00+03:00",
+              "stock": 2,
+              "warehouseShipping": "C5502880-D8DE-11ED-A7C3-00155D1F6C08"
+            },
+            {
+              "code": "СПБ РС",
+              "id": "DB1F1AC9-39A8-11F1-AA2E-6CFE543051E4",
+              "notRefund": false,
+              "own": false,
+              "price": 2301.41,
+              "shipmentDate": "2026-11-12T13:30:00+03:00",
+              "stock": 30,
+              "warehouseShipping": "29107E16-1EA5-11F1-AA2A-6CFE543051E5"
+            },
+            {
+              "code": "НН",
+              "id": "AAA1D7D7-37A5-11EF-A7D6-8DAB4C289914",
+              "notRefund": false,
+              "own": true,
+              "price": 1998.01,
+              "shipmentDate": "2026-11-10T20:00:00+03:00",
+              "stock": 1,
+              "warehouseShipping": "41A5DBC3-1384-11EF-A7D5-D7E337AD9FE5"
+            },
+            {
+              "code": "ДМД",
+              "id": "9FB93976-798B-11EF-A7DE-F0A13A39C8A2",
+              "notRefund": false,
+              "own": true,
+              "price": 1998.01,
+              "shipmentDate": "2026-11-09T20:00:00+03:00",
+              "stock": 23,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "КРН РС",
+              "id": "EE4C0092-073C-11ED-A7B6-00155D1F6C08",
+              "notRefund": false,
+              "own": false,
+              "price": 2823.84,
+              "shipmentDate": "2026-11-12T14:00:00+03:00",
+              "stock": 1,
+              "warehouseShipping": "63E28567-1AD5-11E8-813C-0050568E1762"
+            },
+            {
+              "code": "МСК РС",
+              "id": "BFB2C1B5-66EA-11F0-A7F8-D4F468C486F9",
+              "notRefund": false,
+              "own": false,
+              "price": 3164.4,
+              "shipmentDate": "2026-11-11T15:30:00+03:00",
+              "stock": 10,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "МСК РС",
+              "id": "828D8BBA-63BC-11F0-A7F7-FEFBE46398F2",
+              "notRefund": false,
+              "own": false,
+              "price": 2329.22,
+              "shipmentDate": "2026-11-11T12:20:00+03:00",
+              "stock": 19,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            }
+          ]
+        },
+        {
+          "brand": "LEX",
+          "brand_quality": false,
+          "count": 100,
+          "defect": false,
+          "goodsID": "7671316E-1F32-4078-BAEE-56A92FF4CAEB",
+          "name": "Сайлентблок",
+          "notRefund": false,
+          "number": "SB0463",
+          "price": 350.27,
+          "rate": 1,
+          "sale": [
+            "favorit-servis-nov-26-3",
+            "favorit-servis-nov-26-4",
+            "favorit-servis-nov-26-5",
+            "favorit-servis-nov-26-6",
+            "favorit-servis-nov-26-7",
+            "favorit-servis-nov-26-8",
+            "favorit-servis-nov-26-9",
+            "favorit-servis-nov-26-10",
+            "favorit-servis-nov-26-h2o"
+          ],
+          "warehouses": [
+            {
+              "code": "МСК РС",
+              "id": "04CFF72B-63C3-11F0-A7F7-FEFBE46398F2",
+              "notRefund": true,
+              "own": false,
+              "price": 267.12,
+              "shipmentDate": "2026-11-10T08:30:00+03:00",
+              "stock": 50,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            },
+            {
+              "code": "МСК РС",
+              "id": "4B84C6B1-6087-11F0-A7F7-FEFBE46398F2",
+              "notRefund": false,
+              "own": false,
+              "price": 350.27,
+              "shipmentDate": "2026-11-11T14:30:00+03:00",
+              "stock": 50,
+              "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+            }
+          ]
+        },
+        {
+          "brand": "VEMO/VAICO",
+          "brand_quality": false,
+          "count": 0,
+          "defect": false,
+          "goodsID": "154ACC78-D820-11E2-AF89-0015179B1A7C",
+          "name": "Ремкомплект подвески (без с/блок. стаб.)",
+          "notRefund": false,
+          "number": "V25-9699",
+          "price": 0,
+          "rate": 1,
+          "sale": [
+            "favorit-servis-nov-26-3",
+            "favorit-servis-nov-26-4",
+            "favorit-servis-nov-26-5",
+            "favorit-servis-nov-26-6",
+            "favorit-servis-nov-26-7",
+            "favorit-servis-nov-26-8",
+            "favorit-servis-nov-26-9",
+            "favorit-servis-nov-26-10",
+            "favorit-servis-nov-26-h2o"
+          ],
+          "warehouses": []
+        },
+        {
+          "brand": "JD",
+          "brand_quality": false,
+          "count": 0,
+          "defect": false,
+          "goodsID": "AD7BF866-A185-4345-82EB-F84A2DFA72C9",
+          "name": "Рычаг подвески",
+          "notRefund": false,
+          "number": "JDCS347",
+          "price": 0,
+          "rate": 1,
+          "sale": [
+            "favorit-servis-nov-26-3",
+            "favorit-servis-nov-26-4",
+            "favorit-servis-nov-26-5",
+            "favorit-servis-nov-26-6",
+            "favorit-servis-nov-26-7",
+            "favorit-servis-nov-26-8",
+            "favorit-servis-nov-26-9",
+            "favorit-servis-nov-26-10",
+            "favorit-servis-nov-26-h2o"
+          ],
+          "warehouses": []
+        }
+      ],
+      "brand": "MEYLE",
+      "brand_quality": false,
+      "count": 57,
+      "defect": false,
+      "goodsID": "1FAFD8CA-F73E-11DC-A83E-000E0CE9B9AA",
+      "name": "Рычаги задней подвески ( ком кт на 2 е стороны)",
+      "notRefund": false,
+      "number": "7160500039/S",
+      "price": 23580.74,
+      "rate": 1,
+      "sale": [
+        "favorit-servis-nov-26-3",
+        "favorit-servis-nov-26-4",
+        "favorit-servis-nov-26-5",
+        "favorit-servis-nov-26-6",
+        "favorit-servis-nov-26-7",
+        "favorit-servis-nov-26-8",
+        "favorit-servis-nov-26-9",
+        "favorit-servis-nov-26-10",
+        "favorit-servis-nov-26-h2o"
+      ],
+      "warehouses": [
+        {
+          "code": "МСК РС",
+          "id": "05EA410A-5D9C-11F0-A7F6-DC72C0A5052E",
+          "notRefund": false,
+          "own": false,
+          "price": 29539.56,
+          "shipmentDate": "2026-11-11T08:30:00+03:00",
+          "stock": 6,
+          "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+        },
+        {
+          "code": "СПБ РС",
+          "id": "DB1F1AC9-39A8-11F1-AA2E-6CFE543051E4",
+          "notRefund": false,
+          "own": false,
+          "price": 23580.74,
+          "shipmentDate": "2026-11-12T13:30:00+03:00",
+          "stock": 10,
+          "warehouseShipping": "29107E16-1EA5-11F1-AA2A-6CFE543051E5"
+        },
+        {
+          "code": "МСК РС",
+          "id": "828D8BBA-63BC-11F0-A7F7-FEFBE46398F2",
+          "notRefund": false,
+          "own": false,
+          "price": 23654.6,
+          "shipmentDate": "2026-11-11T12:20:00+03:00",
+          "stock": 10,
+          "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+        },
+        {
+          "code": "МСК РС",
+          "id": "FE3BFF6B-107C-11EC-A360-005056802F4C",
+          "notRefund": false,
+          "own": false,
+          "price": 23346.86,
+          "shipmentDate": "2026-11-11T15:40:00+03:00",
+          "stock": 10,
+          "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+        },
+        {
+          "code": "МСК РС",
+          "id": "9FBAEA6E-66D5-11F0-A7F8-D4F468C486F9",
+          "notRefund": false,
+          "own": false,
+          "price": 23580.74,
+          "shipmentDate": "2026-11-10T14:30:00+03:00",
+          "stock": 6,
+          "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+        },
+        {
+          "code": "МСК РС",
+          "id": "076D9436-5B24-11F0-A7F6-DC72C0A5052E",
+          "notRefund": false,
+          "own": false,
+          "price": 23580.74,
+          "shipmentDate": "2026-11-11T13:30:00+03:00",
+          "stock": 10,
+          "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+        },
+        {
+          "code": "МСК РС",
+          "id": "F54C8DC3-D1E1-11F0-A80D-9011D1D0CCF5",
+          "notRefund": true,
+          "own": false,
+          "price": 26447.1,
+          "shipmentDate": "2026-11-11T15:30:00+03:00",
+          "stock": 5,
+          "warehouseShipping": "A8F1AF29-549E-11EF-A7D7-8058D39F901E"
+        }
+      ]
+    }
+  ]
+}
