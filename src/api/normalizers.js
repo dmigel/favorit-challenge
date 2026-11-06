@@ -78,16 +78,13 @@ function normalizePart(item) {
     .map(normalizeOffer)
     .sort((a, b) => a.price - b.price);
 
-  const minPrice =
-    offers.length > 0 ? Math.min(...offers.map((offer) => offer.price)) : null;
-
   return {
     id: item.goodsID,
-    brand: item.brand,
-    number: item.number,
-    name: item.name,
-    totalStock: item.count,
-    minPrice,
+    brand: item.brand ?? '',
+    number: item.number ?? '',
+    name: item.name ?? '',
+    totalStock: item.count ?? 0,
+    minPrice: offers[0]?.price ?? null,
     notRefund: Boolean(item.notRefund),
     offers,
   };

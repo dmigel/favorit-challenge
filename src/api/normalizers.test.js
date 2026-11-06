@@ -100,6 +100,34 @@ describe('normalizeBrands', () => {
     expect(parts[0].offers[0].id).toBe('w2');
     expect(parts[0].minPrice).toBe(200);
   });
+
+  it('позиция без brand не ломает normalizeBrands', () => {
+    const parts = normalizeBrands([
+      {
+        goodsID: 'id-no-brand',
+        number: '42',
+        name: 'Без бренда',
+        count: 3,
+        warehouses: [
+          {
+            id: 'w1',
+            code: 'A',
+            own: false,
+            price: 150,
+            stock: 3,
+            shipmentDate: '2026-01-01T00:00:00+03:00',
+          },
+        ],
+      },
+    ]);
+
+    expect(parts).toHaveLength(1);
+    expect(parts[0].brand).toBe('');
+    expect(parts[0].name).toBe('Без бренда');
+    expect(parts[0].number).toBe('42');
+    expect(parts[0].totalStock).toBe(3);
+    expect(parts[0].minPrice).toBe(150);
+  });
 });
 
 describe('normalizeOffers', () => {

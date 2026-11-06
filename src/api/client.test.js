@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw';
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { server } from '../test/server.js';
 import { TEST_NUMBERS } from '../test/handlers.js';
 import { ApiError } from './ApiError.js';
@@ -86,6 +86,38 @@ describe('requestParts', () => {
       kind: 'parse',
       message: 'Некорректный ответ сервера',
     });
+  });
+
+  it('при ответе null бросает ApiError kind parse', async () => {
+    server.use(
+      http.get('*/api/hsprice', () => HttpResponse.json(null)),
+    );
+
+    await expect(requestParts({ number: '0189' })).rejects.toMatchObject({
+      name: 'ApiError',
+      kind: 'parse',
+      message: 'Некорректный ответ сервера',
+    });
+  });
+
+  it('при пустом VITE_API_KEY не передаёт параметр key', async () => {
+    vi.stubEnv('VITE_API_KEY', '');
+    let capturedUrl;
+
+    try {
+      server.use(
+        http.get('*/api/hsprice', ({ request }) => {
+          capturedUrl = new URL(request.url);
+          return HttpResponse.json({ goods: [] });
+        }),
+      );
+
+      await requestParts({ number: '0189' });
+
+      expect(capturedUrl.searchParams.has('key')).toBe(false);
+    } finally {
+      vi.unstubAllEnvs();
+    }
   });
 
   it('при error в теле бросает ApiError kind api с русским сообщением', async () => {

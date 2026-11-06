@@ -9,7 +9,10 @@ export async function requestParts(params = {}) {
   const url = new URL(import.meta.env.VITE_API_BASE_URL, window.location.origin);
   const searchParams = new URLSearchParams();
 
-  searchParams.set('key', import.meta.env.VITE_API_KEY);
+  const apiKey = import.meta.env.VITE_API_KEY;
+  if (apiKey) {
+    searchParams.set('key', apiKey);
+  }
 
   for (const [name, value] of Object.entries(params)) {
     if (value === undefined || value === null || value === '') {
@@ -35,6 +38,10 @@ export async function requestParts(params = {}) {
   try {
     body = await response.json();
   } catch {
+    throw new ApiError('parse');
+  }
+
+  if (body === null || typeof body !== 'object') {
     throw new ApiError('parse');
   }
 
