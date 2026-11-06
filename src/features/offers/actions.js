@@ -47,7 +47,7 @@ export function offersReset() {
  */
 export function fetchOffers(number, brand) {
   return async (dispatch, getState) => {
-    const query = { number: String(number).trim(), brand };
+    const query = { number: String(number ?? '').trim(), brand: brand ?? '' };
 
     if (!query.number || !query.brand) {
       dispatch(offersReset());

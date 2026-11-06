@@ -46,7 +46,7 @@ export function brandsReset() {
  */
 export function fetchBrands(number) {
   return async (dispatch, getState) => {
-    const query = { number: String(number).trim() };
+    const query = { number: String(number ?? '').trim() };
 
     if (!query.number) {
       dispatch(brandsReset());

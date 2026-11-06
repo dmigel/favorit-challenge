@@ -184,4 +184,24 @@ describe('fetchOffers', () => {
     expect(selectOffersStatus(store.getState())).toBe(STATUS.IDLE);
     expect(fetchSpy).not.toHaveBeenCalled();
   });
+
+  it('brand null -> idle и ни одного запроса', async () => {
+    const fetchSpy = vi.spyOn(globalThis, 'fetch');
+    const store = createAppStore();
+
+    await store.dispatch(fetchOffers('123', null));
+
+    expect(selectOffersStatus(store.getState())).toBe(STATUS.IDLE);
+    expect(fetchSpy).not.toHaveBeenCalled();
+  });
+
+  it('number null -> idle и ни одного запроса', async () => {
+    const fetchSpy = vi.spyOn(globalThis, 'fetch');
+    const store = createAppStore();
+
+    await store.dispatch(fetchOffers(null, 'MEYLE'));
+
+    expect(selectOffersStatus(store.getState())).toBe(STATUS.IDLE);
+    expect(fetchSpy).not.toHaveBeenCalled();
+  });
 });
