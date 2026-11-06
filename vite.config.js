@@ -17,6 +17,10 @@ export default defineConfig({
     globals: true,
     setupFiles: ['./src/test/setup.js'],
     css: false,
+    env: {
+      VITE_API_BASE_URL: '/api/hsprice',
+      VITE_API_KEY: 'test-key',
+    },
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html'],
