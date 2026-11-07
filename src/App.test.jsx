@@ -1,9 +1,26 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import App from './App.jsx';
+import { renderWithProviders } from './test/renderWithProviders.jsx';
 
 describe('App', () => {
-  it('рендерится и содержит заголовок', () => {
-    render(<App />);
+  it('на "/" показывает заголовок главной внутри layout', () => {
+    renderWithProviders(<App />, { route: '/' });
+
     expect(screen.getByRole('heading', { name: 'Подбор автозапчастей' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Подбор автозапчастей' })).toBeInTheDocument();
+    expect(screen.getByText('Введите номер детали')).toBeInTheDocument();
+  });
+
+  it('на "/offers" показывает «Предложения»', () => {
+    renderWithProviders(<App />, { route: '/offers' });
+
+    expect(screen.getByRole('heading', { name: 'Предложения' })).toBeInTheDocument();
+  });
+
+  it('на "/unknown" показывает «Страница не найдена»', () => {
+    renderWithProviders(<App />, { route: '/unknown' });
+
+    expect(screen.getByRole('heading', { name: 'Страница не найдена' })).toBeInTheDocument();
   });
 });
