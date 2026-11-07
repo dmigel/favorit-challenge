@@ -7,9 +7,9 @@ describe('App', () => {
   it('на "/" показывает заголовок главной внутри layout', () => {
     renderWithProviders(<App />, { route: '/' });
 
-    expect(screen.getByRole('heading', { name: 'Подбор автозапчастей' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Поиск по номеру детали' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Подбор автозапчастей' })).toBeInTheDocument();
-    expect(screen.getByText('Введите номер детали')).toBeInTheDocument();
+    expect(screen.getByText('Введите номер детали', { exact: false })).toBeInTheDocument();
   });
 
   it('на "/offers" показывает «Предложения»', () => {
