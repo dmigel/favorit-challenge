@@ -176,4 +176,68 @@ describe('normalizeOffers', () => {
     expect(result.analogues).toHaveLength(1);
     expect(result.analogues[0].brand).toBe('RTS');
   });
+
+  it('пропускает аналог с goodsID запрошенной детали', () => {
+    const requestedId = 'REQ-SAME-ID';
+    const result = normalizeOffers([
+      {
+        goodsID: requestedId,
+        brand: 'OEM',
+        number: '1',
+        name: 'Requested',
+        count: 2,
+        warehouses: [
+          {
+            id: 'w1',
+            code: 'A',
+            own: true,
+            price: 100,
+            stock: 2,
+            shipmentDate: '2026-01-01T00:00:00+03:00',
+          },
+        ],
+        analogues: [
+          {
+            goodsID: requestedId,
+            brand: 'OEM',
+            number: '1',
+            name: 'Duplicate of requested',
+            count: 1,
+            warehouses: [
+              {
+                id: 'w2',
+                code: 'B',
+                own: false,
+                price: 90,
+                stock: 1,
+                shipmentDate: '2026-01-01T00:00:00+03:00',
+              },
+            ],
+          },
+          {
+            goodsID: 'ANALOGUE-OTHER',
+            brand: 'ALT',
+            number: '2',
+            name: 'Other',
+            count: 3,
+            warehouses: [
+              {
+                id: 'w3',
+                code: 'C',
+                own: false,
+                price: 50,
+                stock: 3,
+                shipmentDate: '2026-01-01T00:00:00+03:00',
+              },
+            ],
+          },
+        ],
+      },
+    ]);
+
+    expect(result.requested.id).toBe(requestedId);
+    expect(result.analogues).toHaveLength(1);
+    expect(result.analogues[0].id).toBe('ANALOGUE-OTHER');
+    expect(result.analogues[0].brand).toBe('ALT');
+  });
 });

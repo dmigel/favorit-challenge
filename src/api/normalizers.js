@@ -150,6 +150,9 @@ export function normalizeOffers(goods) {
     if (isEmptyItem(analogue)) {
       continue;
     }
+    if (requested !== null && analogue.goodsID === requested.id) {
+      continue;
+    }
     if (seenIds.has(analogue.goodsID)) {
       continue;
     }

@@ -1,5 +1,24 @@
 import { describe, expect, it } from 'vitest';
-import { buildOffersPath } from './routes.js';
+import { buildOffersPath, buildSearchPath } from './routes.js';
+
+describe('buildSearchPath', () => {
+  it('собирает путь с номером', () => {
+    expect(buildSearchPath('0189')).toBe('/?number=0189');
+  });
+
+  it('для пустого и undefined возвращает корень', () => {
+    expect(buildSearchPath('')).toBe('/');
+    expect(buildSearchPath(undefined)).toBe('/');
+  });
+
+  it('корректно кодирует номер со спецсимволами', () => {
+    const number = 'A#B&C/1';
+    const path = buildSearchPath(number);
+    const params = new URLSearchParams(path.slice(path.indexOf('?') + 1));
+
+    expect(params.get('number')).toBe(number);
+  });
+});
 
 describe('buildOffersPath', () => {
   it('собирает путь с номером и брендом', () => {
