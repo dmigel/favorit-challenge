@@ -12,10 +12,11 @@ describe('App', () => {
     expect(screen.getByText('Введите номер детали', { exact: false })).toBeInTheDocument();
   });
 
-  it('на "/offers" показывает «Предложения»', () => {
+  it('на "/offers" показывает заголовок и «Не выбран производитель»', () => {
     renderWithProviders(<App />, { route: '/offers' });
 
-    expect(screen.getByRole('heading', { name: 'Предложения' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Аналоги и предложения' })).toBeInTheDocument();
+    expect(screen.getByText('Не выбран производитель')).toBeInTheDocument();
   });
 
   it('на "/unknown" показывает «Страница не найдена»', () => {
