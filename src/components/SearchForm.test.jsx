@@ -65,4 +65,49 @@ describe('SearchForm', () => {
 
     expect(screen.getByLabelText('Номер детали')).toHaveValue('0420');
   });
+
+  it('onChange вызывается на каждый ввод с текущим значением', async () => {
+    const user = userEvent.setup();
+    const onChange = vi.fn();
+    render(<SearchForm onSubmit={vi.fn()} onChange={onChange} />);
+
+    await user.type(screen.getByLabelText('Номер детали'), 'ab');
+
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(onChange).toHaveBeenNthCalledWith(1, 'a');
+    expect(onChange).toHaveBeenNthCalledWith(2, 'ab');
+  });
+
+  it('hint виден и связан с полем', () => {
+    render(
+      <SearchForm
+        onSubmit={vi.fn()}
+        hint="Подсказка автопоиска"
+      />,
+    );
+
+    const input = screen.getByLabelText('Номер детали');
+    expect(screen.getByText('Подсказка автопоиска')).toBeInTheDocument();
+    expect(input).toHaveAccessibleDescription('Подсказка автопоиска');
+  });
+
+  it('без hint описания нет', () => {
+    render(<SearchForm onSubmit={vi.fn()} />);
+
+    expect(screen.getByLabelText('Номер детали')).not.toHaveAccessibleDescription();
+  });
+
+  it('если trim ввода равен новому initialValue, завершающий пробел сохраняется', async () => {
+    const user = userEvent.setup();
+    const onSubmit = vi.fn();
+    const { rerender } = render(
+      <SearchForm initialValue="" onSubmit={onSubmit} />,
+    );
+
+    await user.type(screen.getByLabelText('Номер детали'), '0189 ');
+
+    rerender(<SearchForm initialValue="0189" onSubmit={onSubmit} />);
+
+    expect(screen.getByLabelText('Номер детали')).toHaveValue('0189 ');
+  });
 });

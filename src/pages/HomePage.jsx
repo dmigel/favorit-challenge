@@ -1,8 +1,14 @@
+import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import AsyncView from '../components/AsyncView.jsx';
 import BrandList from '../components/BrandList.jsx';
 import SearchForm from '../components/SearchForm.jsx';
 import { useBrands } from '../hooks/useBrands.js';
+import { useDebouncedCallback } from '../hooks/useDebouncedCallback.js';
+import {
+  MIN_SEARCH_LENGTH,
+  SEARCH_DEBOUNCE_MS,
+} from '../utils/constants.js';
 
 /**
  * Главная страница: поиск производителей по номеру детали (этап 1).
@@ -12,11 +18,36 @@ function HomePage() {
   const number = (searchParams.get('number') ?? '').trim();
   const { status, error, isEmpty, retry } = useBrands(number);
 
+  const debouncedSearch = useDebouncedCallback((value) => {
+    const next = value.trim();
+
+    if (next === number) {
+      return;
+    }
+
+    if (next === '') {
+      setSearchParams({});
+      return;
+    }
+
+    if (next.length < MIN_SEARCH_LENGTH) {
+      return;
+    }
+
+    setSearchParams({ number: next }, { replace: number !== '' });
+  }, SEARCH_DEBOUNCE_MS);
+
+  useEffect(() => {
+    debouncedSearch.cancel();
+  }, [number, debouncedSearch]);
+
   /**
    * Обновляет номер в URL или повторяет запрос для текущего номера.
    * @param {string} next
    */
   function handleSubmit(next) {
+    debouncedSearch.cancel();
+
     if (next === number) {
       retry();
     } else {
@@ -31,7 +62,12 @@ function HomePage() {
         Шаг 1 из 2: введите номер, затем выберите производителя
       </p>
 
-      <SearchForm initialValue={number} onSubmit={handleSubmit} />
+      <SearchForm
+        initialValue={number}
+        onSubmit={handleSubmit}
+        onChange={debouncedSearch}
+        hint={`Поиск запустится сам после паузы в вводе (от ${MIN_SEARCH_LENGTH} символов) или по кнопке «Найти»`}
+      />
 
       {number === '' ? (
         <p className="text-muted">
