@@ -1,7 +1,22 @@
 import { SORT } from './constants.js';
 
 /**
+ * Детерминированный tie-breaker: brand, затем number (localeCompare 'ru').
+ * @param {import('../api/normalizers.js').Part} a
+ * @param {import('../api/normalizers.js').Part} b
+ * @returns {number}
+ */
+function compareByBrandThenNumber(a, b) {
+  const byBrand = a.brand.localeCompare(b.brand, 'ru');
+  if (byBrand !== 0) {
+    return byBrand;
+  }
+  return a.number.localeCompare(b.number, 'ru');
+}
+
+/**
  * Сравнивает две позиции по минимальной цене; null всегда в конце.
+ * При равенстве — tie-breaker по brand, затем number.
  * @param {import('../api/normalizers.js').Part} a
  * @param {import('../api/normalizers.js').Part} b
  * @param {1|-1} direction — 1 для возрастания, -1 для убывания
@@ -12,7 +27,7 @@ function compareByPrice(a, b, direction) {
   const bNull = b.minPrice === null;
 
   if (aNull && bNull) {
-    return 0;
+    return compareByBrandThenNumber(a, b);
   }
   if (aNull) {
     return 1;
@@ -21,12 +36,16 @@ function compareByPrice(a, b, direction) {
     return -1;
   }
 
-  return direction * (a.minPrice - b.minPrice);
+  const byPrice = direction * (a.minPrice - b.minPrice);
+  if (byPrice !== 0) {
+    return byPrice;
+  }
+  return compareByBrandThenNumber(a, b);
 }
 
 /**
  * Фильтрует и сортирует аналоги для локального просмотра этапа 2.
- * Входной массив не мутируется; сортировка стабильная.
+ * Входной массив не мутируется; при известных sort порядок детерминирован.
  * @param {import('../api/normalizers.js').Part[]} parts
  * @param {{ inStockOnly?: boolean, sort?: string, text?: string }} [options]
  * @returns {import('../api/normalizers.js').Part[]}
@@ -55,7 +74,13 @@ export function filterAndSortParts(
   } else if (sort === SORT.PRICE_DESC) {
     result.sort((a, b) => compareByPrice(a, b, -1));
   } else if (sort === SORT.STOCK_DESC) {
-    result.sort((a, b) => b.totalStock - a.totalStock);
+    result.sort((a, b) => {
+      const byStock = b.totalStock - a.totalStock;
+      if (byStock !== 0) {
+        return byStock;
+      }
+      return compareByBrandThenNumber(a, b);
+    });
   }
 
   return result;

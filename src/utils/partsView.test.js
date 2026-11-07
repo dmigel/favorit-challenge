@@ -53,8 +53,8 @@ describe('filterAndSortParts', () => {
       'RTS',
       'Mapco',
       'SUFIX',
-      'VEMO/VAICO',
       'JD',
+      'VEMO/VAICO',
     ]);
   });
 
@@ -70,8 +70,8 @@ describe('filterAndSortParts', () => {
       'Mapco',
       'RTS',
       'LEX',
-      'VEMO/VAICO',
       'JD',
+      'VEMO/VAICO',
     ]);
   });
 
@@ -134,20 +134,33 @@ describe('filterAndSortParts', () => {
     expect(result).toHaveLength(fixtureAnalogues.length);
   });
 
-  it('сортировка стабильна и неизвестный sort не меняет порядок', () => {
-    const parts = [
-      makePart({ id: '1', brand: 'A', totalStock: 5, minPrice: 100 }),
-      makePart({ id: '2', brand: 'B', totalStock: 5, minPrice: 100 }),
-      makePart({ id: '3', brand: 'C', totalStock: 5, minPrice: 100 }),
+  it('равные по основному ключу идут по brand, затем по number независимо от исходного порядка', () => {
+    const shuffled = [
+      makePart({ id: '1', brand: 'Beta', number: '20', totalStock: 5, minPrice: 100 }),
+      makePart({ id: '2', brand: 'Alpha', number: '30', totalStock: 5, minPrice: 100 }),
+      makePart({ id: '3', brand: 'Alpha', number: '10', totalStock: 5, minPrice: 100 }),
+      makePart({ id: '4', brand: 'Gamma', number: '5', totalStock: 5, minPrice: 100 }),
     ];
+    const expected = ['Alpha/10', 'Alpha/30', 'Beta/20', 'Gamma/5'];
+    const key = (part) => `${part.brand}/${part.number}`;
 
-    expect(
-      filterAndSortParts(parts, {
-        inStockOnly: false,
-        sort: SORT.PRICE_ASC,
-        text: '',
-      }).map((part) => part.brand),
-    ).toEqual(['A', 'B', 'C']);
+    for (const sort of [SORT.PRICE_ASC, SORT.PRICE_DESC, SORT.STOCK_DESC]) {
+      expect(
+        filterAndSortParts(shuffled, {
+          inStockOnly: false,
+          sort,
+          text: '',
+        }).map(key),
+      ).toEqual(expected);
+    }
+  });
+
+  it('неизвестный sort не меняет порядок', () => {
+    const parts = [
+      makePart({ id: '1', brand: 'C', totalStock: 5, minPrice: 100 }),
+      makePart({ id: '2', brand: 'A', totalStock: 5, minPrice: 100 }),
+      makePart({ id: '3', brand: 'B', totalStock: 5, minPrice: 100 }),
+    ];
 
     expect(
       filterAndSortParts(parts, {
@@ -155,7 +168,7 @@ describe('filterAndSortParts', () => {
         sort: 'unknown-sort',
         text: '',
       }).map((part) => part.brand),
-    ).toEqual(['A', 'B', 'C']);
+    ).toEqual(['C', 'A', 'B']);
   });
 
   it('не мутирует входной Object.freeze-массив', () => {
