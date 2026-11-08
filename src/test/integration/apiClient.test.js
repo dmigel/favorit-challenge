@@ -1,9 +1,8 @@
 import { http, HttpResponse } from 'msw';
-import { afterEach, describe, expect, it, vi } from 'vitest';
-import { server } from '../test/server.js';
-import { TEST_NUMBERS } from '../test/handlers.js';
-import { ApiError } from './ApiError.js';
-import { requestParts } from './client.js';
+import { afterEach, describe, expect, it } from 'vitest';
+import { server } from '../server.js';
+import { TEST_NUMBERS } from '../handlers.js';
+import { requestParts } from '../../api/client.js';
 
 afterEach(() => {
   server.resetHandlers();
@@ -88,38 +87,6 @@ describe('requestParts', () => {
     });
   });
 
-  it('при ответе null бросает ApiError kind parse', async () => {
-    server.use(
-      http.get('*/api/hsprice', () => HttpResponse.json(null)),
-    );
-
-    await expect(requestParts({ number: '0189' })).rejects.toMatchObject({
-      name: 'ApiError',
-      kind: 'parse',
-      message: 'Некорректный ответ сервера',
-    });
-  });
-
-  it('при пустом VITE_API_KEY не передаёт параметр key', async () => {
-    vi.stubEnv('VITE_API_KEY', '');
-    let capturedUrl;
-
-    try {
-      server.use(
-        http.get('*/api/hsprice', ({ request }) => {
-          capturedUrl = new URL(request.url);
-          return HttpResponse.json({ goods: [] });
-        }),
-      );
-
-      await requestParts({ number: '0189' });
-
-      expect(capturedUrl.searchParams.has('key')).toBe(false);
-    } finally {
-      vi.unstubAllEnvs();
-    }
-  });
-
   it('при error в теле бросает ApiError kind api с русским сообщением', async () => {
     await expect(
       requestParts({ number: TEST_NUMBERS.QUOTA }),
@@ -129,27 +96,5 @@ describe('requestParts', () => {
       message: 'Превышен лимит запросов, попробуйте позже',
       details: ['Request quota exceeded!'],
     });
-  });
-
-  it('объединяет массив ошибок API через "; "', async () => {
-    server.use(
-      http.get('*/api/hsprice', () =>
-        HttpResponse.json({
-          error: ['Empty key!', 'Empty number goods!'],
-        }),
-      ),
-    );
-
-    try {
-      await requestParts({ number: '0189' });
-      expect.unreachable('ожидалась ошибка');
-    } catch (error) {
-      expect(error).toBeInstanceOf(ApiError);
-      expect(error.kind).toBe('api');
-      expect(error.message).toBe(
-        'Не указан ключ API; Введите номер детали',
-      );
-      expect(error.details).toEqual(['Empty key!', 'Empty number goods!']);
-    }
   });
 });

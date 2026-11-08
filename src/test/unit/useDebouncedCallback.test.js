@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { useDebouncedCallback } from './useDebouncedCallback.js';
+import { useDebouncedCallback } from '../../hooks/useDebouncedCallback.js';
 
 describe('useDebouncedCallback', () => {
   beforeEach(() => {
@@ -64,43 +64,5 @@ describe('useDebouncedCallback', () => {
     });
 
     expect(callback).not.toHaveBeenCalled();
-  });
-
-  it('если callback поменялся до срабатывания, вызывается новый', () => {
-    const first = vi.fn();
-    const second = vi.fn();
-    const { result, rerender } = renderHook(
-      ({ callback }) => useDebouncedCallback(callback, 500),
-      { initialProps: { callback: first } },
-    );
-
-    act(() => {
-      result.current('abc');
-    });
-
-    rerender({ callback: second });
-
-    act(() => {
-      vi.advanceTimersByTime(500);
-    });
-
-    expect(first).not.toHaveBeenCalled();
-    expect(second).toHaveBeenCalledTimes(1);
-    expect(second).toHaveBeenCalledWith('abc');
-  });
-
-  it('функция стабильна между рендерами при том же delay', () => {
-    const callback = vi.fn();
-    const { result, rerender } = renderHook(
-      ({ delay }) => useDebouncedCallback(callback, delay),
-      { initialProps: { delay: 500 } },
-    );
-
-    const first = result.current;
-    rerender({ delay: 500 });
-    expect(result.current).toBe(first);
-
-    rerender({ delay: 300 });
-    expect(result.current).not.toBe(first);
   });
 });

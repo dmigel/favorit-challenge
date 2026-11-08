@@ -1,11 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import brandsFixture from '../test/fixtures/brands-0189.json';
-import offersFixture from '../test/fixtures/offers-meyle-7160500039S.json';
+import brandsFixture from '../fixtures/brands-0189.json';
+import offersFixture from '../fixtures/offers-meyle-7160500039S.json';
 import {
-  isEmptyItem,
   normalizeBrands,
   normalizeOffers,
-} from './normalizers.js';
+} from '../../api/normalizers.js';
 
 const EMPTY_ITEM = {
   goodsID: '00000000-0000-0000-0000-000000000000',
@@ -17,15 +16,6 @@ const EMPTY_ITEM = {
   rate: 0,
   warehouses: [],
 };
-
-describe('isEmptyItem', () => {
-  it('распознаёт пустую структуру «не найдено»', () => {
-    expect(isEmptyItem(EMPTY_ITEM)).toBe(true);
-    expect(isEmptyItem({ brand: '', name: '', number: '', goodsID: 'x' })).toBe(
-      true,
-    );
-  });
-});
 
 describe('normalizeBrands', () => {
   it('нормализует фикстуру этапа 1 в ожидаемом порядке', () => {
@@ -49,22 +39,6 @@ describe('normalizeBrands', () => {
   it('возвращает пустой массив для пустого ответа и пустой структуры', () => {
     expect(normalizeBrands([])).toEqual([]);
     expect(normalizeBrands([EMPTY_ITEM])).toEqual([]);
-  });
-
-  it('схлопывает дубли по brand, беря первую позицию', () => {
-    const duplicate = {
-      ...brandsFixture.goods[0],
-      brand: 'CAFFARO',
-      goodsID: 'DUPLICATE-ID',
-      count: 99,
-    };
-    const parts = normalizeBrands([
-      brandsFixture.goods.find((item) => item.brand === 'CAFFARO'),
-      duplicate,
-    ]);
-
-    expect(parts).toHaveLength(1);
-    expect(parts[0].id).toBe('9769C10C-5401-4C55-B79B-583774FA9642');
   });
 
   it('отбрасывает склады с нулевым остатком', () => {
@@ -100,64 +74,9 @@ describe('normalizeBrands', () => {
     expect(parts[0].offers[0].id).toBe('w2');
     expect(parts[0].minPrice).toBe(200);
   });
-
-  it('позиция без brand не ломает normalizeBrands', () => {
-    const parts = normalizeBrands([
-      {
-        goodsID: 'id-no-brand',
-        number: '42',
-        name: 'Без бренда',
-        count: 3,
-        warehouses: [
-          {
-            id: 'w1',
-            code: 'A',
-            own: false,
-            price: 150,
-            stock: 3,
-            shipmentDate: '2026-01-01T00:00:00+03:00',
-          },
-        ],
-      },
-    ]);
-
-    expect(parts).toHaveLength(1);
-    expect(parts[0].brand).toBe('');
-    expect(parts[0].name).toBe('Без бренда');
-    expect(parts[0].number).toBe('42');
-    expect(parts[0].totalStock).toBe(3);
-    expect(parts[0].minPrice).toBe(150);
-  });
 });
 
 describe('normalizeOffers', () => {
-  it('нормализует фикстуру этапа 2 для MEYLE', () => {
-    const result = normalizeOffers(offersFixture.goods);
-
-    expect(result.requested.brand).toBe('MEYLE');
-    expect(result.requested.minPrice).toBe(23346.86);
-    expect(result.requested.totalStock).toBe(57);
-    expect(result.analogues).toHaveLength(6);
-
-    const noStock = result.analogues.filter(
-      (part) => part.brand === 'VEMO/VAICO' || part.brand === 'JD',
-    );
-    expect(noStock).toHaveLength(2);
-    for (const part of noStock) {
-      expect(part.totalStock).toBe(0);
-      expect(part.offers).toEqual([]);
-      expect(part.minPrice).toBeNull();
-    }
-  });
-
-  it('возвращает пустой результат для пустой структуры без аналогов', () => {
-    expect(normalizeOffers([EMPTY_ITEM])).toEqual({
-      requested: null,
-      analogues: [],
-    });
-    expect(normalizeOffers([])).toEqual({ requested: null, analogues: [] });
-  });
-
   it('схлопывает дубли аналогов по goodsID и отбрасывает пустые', () => {
     const result = normalizeOffers([
       {

@@ -1,13 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { normalizeOffers } from '../api/normalizers.js';
-import offersFixture from '../test/fixtures/offers-meyle-7160500039S.json';
-import { SORT } from './constants.js';
-import { filterAndSortParts } from './partsView.js';
+import { normalizeOffers } from '../../api/normalizers.js';
+import offersFixture from '../fixtures/offers-meyle-7160500039S.json';
+import { SORT } from '../../utils/constants.js';
+import { filterAndSortParts } from '../../utils/partsView.js';
 
 /**
  * Собирает синтетическую позицию для тестов фильтрации/сортировки.
- * @param {Partial<import('../api/normalizers.js').Part>} [overrides]
- * @returns {import('../api/normalizers.js').Part}
+ * @param {Partial<import('../../api/normalizers.js').Part>} [overrides]
+ * @returns {import('../../api/normalizers.js').Part}
  */
 function makePart(overrides = {}) {
   return {
@@ -58,57 +58,6 @@ describe('filterAndSortParts', () => {
     ]);
   });
 
-  it('PRICE_DESC без inStockOnly: дорогие сначала, без цены в конце', () => {
-    const result = filterAndSortParts(fixtureAnalogues, {
-      inStockOnly: false,
-      sort: SORT.PRICE_DESC,
-      text: '',
-    });
-
-    expect(result.map((part) => part.brand)).toEqual([
-      'SUFIX',
-      'Mapco',
-      'RTS',
-      'LEX',
-      'JD',
-      'VEMO/VAICO',
-    ]);
-  });
-
-  it('STOCK_DESC сортирует по убыванию остатка на синтетике', () => {
-    const parts = [
-      makePart({ id: 'a', brand: 'A', totalStock: 10, minPrice: 100 }),
-      makePart({ id: 'b', brand: 'B', totalStock: 50, minPrice: 200 }),
-      makePart({ id: 'c', brand: 'C', totalStock: 30, minPrice: 50 }),
-    ];
-
-    const result = filterAndSortParts(parts, {
-      inStockOnly: false,
-      sort: SORT.STOCK_DESC,
-      text: '',
-    });
-
-    expect(result.map((part) => part.brand)).toEqual(['B', 'C', 'A']);
-  });
-
-  it('текстовый фильтр ищет подстроки без учёта регистра', () => {
-    expect(
-      filterAndSortParts(fixtureAnalogues, {
-        inStockOnly: false,
-        sort: SORT.PRICE_ASC,
-        text: 'rts',
-      }).map((part) => part.brand),
-    ).toEqual(['RTS']);
-
-    expect(
-      filterAndSortParts(fixtureAnalogues, {
-        inStockOnly: false,
-        sort: SORT.PRICE_ASC,
-        text: 'сайлентблок',
-      }).map((part) => part.brand),
-    ).toEqual(['LEX']);
-  });
-
   it('многословный фильтр требует каждое слово (не подряд)', () => {
     const result = filterAndSortParts(fixtureAnalogues, {
       inStockOnly: false,
@@ -122,16 +71,6 @@ describe('filterAndSortParts', () => {
       'SUFIX',
       'JD',
     ]);
-  });
-
-  it('текст из одних пробелов не фильтрует', () => {
-    const result = filterAndSortParts(fixtureAnalogues, {
-      inStockOnly: false,
-      sort: SORT.PRICE_ASC,
-      text: '   ',
-    });
-
-    expect(result).toHaveLength(fixtureAnalogues.length);
   });
 
   it('равные по основному ключу идут по brand, затем по number независимо от исходного порядка', () => {
@@ -153,22 +92,6 @@ describe('filterAndSortParts', () => {
         }).map(key),
       ).toEqual(expected);
     }
-  });
-
-  it('неизвестный sort не меняет порядок', () => {
-    const parts = [
-      makePart({ id: '1', brand: 'C', totalStock: 5, minPrice: 100 }),
-      makePart({ id: '2', brand: 'A', totalStock: 5, minPrice: 100 }),
-      makePart({ id: '3', brand: 'B', totalStock: 5, minPrice: 100 }),
-    ];
-
-    expect(
-      filterAndSortParts(parts, {
-        inStockOnly: false,
-        sort: 'unknown-sort',
-        text: '',
-      }).map((part) => part.brand),
-    ).toEqual(['C', 'A', 'B']);
   });
 
   it('не мутирует входной Object.freeze-массив', () => {

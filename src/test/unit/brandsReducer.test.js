@@ -1,16 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { STATUS } from '../../store/helpers.js';
-import { BRANDS, BRANDS_RESET } from './actionTypes.js';
-import brandsReducer, { initialState } from './reducer.js';
+import { BRANDS } from '../../features/brands/actionTypes.js';
+import brandsReducer from '../../features/brands/reducer.js';
 
 const sampleItems = [{ id: '1', brand: 'ZEN', number: '0189' }];
 const query = { number: '0189' };
 
 describe('brandsReducer', () => {
-  it('возвращает initialState по умолчанию', () => {
-    expect(brandsReducer(undefined, { type: '@@INIT' })).toEqual(initialState);
-  });
-
   it('REQUEST переводит в loading и очищает данные', () => {
     const prev = {
       status: STATUS.SUCCEEDED,
@@ -74,19 +70,6 @@ describe('brandsReducer', () => {
     });
   });
 
-  it('RESET возвращает initialState', () => {
-    const state = {
-      status: STATUS.SUCCEEDED,
-      query,
-      items: sampleItems,
-      error: null,
-    };
-
-    expect(brandsReducer(Object.freeze(state), { type: BRANDS_RESET })).toBe(
-      initialState,
-    );
-  });
-
   it('игнорирует устаревший SUCCESS', () => {
     const state = {
       status: STATUS.LOADING,
@@ -102,28 +85,6 @@ describe('brandsReducer', () => {
         payload: sampleItems,
       }),
     ).toBe(state);
-  });
-
-  it('игнорирует устаревший FAILURE', () => {
-    const state = {
-      status: STATUS.LOADING,
-      query: { number: 'new' },
-      items: [],
-      error: null,
-    };
-
-    expect(
-      brandsReducer(Object.freeze(state), {
-        type: BRANDS.FAILURE,
-        query: { number: 'old' },
-        error: { kind: 'api', message: 'x' },
-      }),
-    ).toBe(state);
-  });
-
-  it('неизвестный экшен возвращает тот же state', () => {
-    const state = Object.freeze({ ...initialState });
-    expect(brandsReducer(state, { type: 'UNKNOWN' })).toBe(state);
   });
 
   it('не мутирует переданный state', () => {

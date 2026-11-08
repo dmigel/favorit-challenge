@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import ErrorBoundary from './ErrorBoundary.jsx';
+import ErrorBoundary from '../../components/ErrorBoundary.jsx';
 
 /**
  * Тестовый компонент: бросает ошибку по флагу.

@@ -16,6 +16,7 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     setupFiles: ['./src/test/setup.js'],
+    include: ['src/test/**/*.test.{js,jsx}'],
     css: false,
     env: {
       VITE_API_BASE_URL: '/api/hsprice',
@@ -24,6 +25,8 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html'],
+      include: ['src/**'],
+      exclude: ['src/test/**', 'src/main.jsx'],
     },
   },
 });

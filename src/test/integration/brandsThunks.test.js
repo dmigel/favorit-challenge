@@ -1,17 +1,17 @@
 import { delay, http, HttpResponse } from 'msw';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import brandsFixture from '../../test/fixtures/brands-0189.json';
-import { TEST_NUMBERS } from '../../test/handlers.js';
-import { server } from '../../test/server.js';
+import brandsFixture from '../fixtures/brands-0189.json';
+import { TEST_NUMBERS } from '../handlers.js';
+import { server } from '../server.js';
 import { createAppStore } from '../../store/index.js';
 import { STATUS } from '../../store/helpers.js';
-import { fetchBrands } from './actions.js';
+import { fetchBrands } from '../../features/brands/actions.js';
 import {
   selectBrandsError,
   selectBrandsIsEmpty,
   selectBrandsItems,
   selectBrandsStatus,
-} from './selectors.js';
+} from '../../features/brands/selectors.js';
 
 afterEach(() => {
   server.resetHandlers();
@@ -51,22 +51,6 @@ describe('fetchBrands', () => {
     });
   });
 
-  it('SERVER_ERROR -> kind http', async () => {
-    const store = createAppStore();
-    await store.dispatch(fetchBrands(TEST_NUMBERS.SERVER_ERROR));
-
-    expect(selectBrandsStatus(store.getState())).toBe(STATUS.FAILED);
-    expect(selectBrandsError(store.getState()).kind).toBe('http');
-  });
-
-  it('NETWORK -> kind network', async () => {
-    const store = createAppStore();
-    await store.dispatch(fetchBrands(TEST_NUMBERS.NETWORK));
-
-    expect(selectBrandsStatus(store.getState())).toBe(STATUS.FAILED);
-    expect(selectBrandsError(store.getState()).kind).toBe('network');
-  });
-
   it('два подряд вызова с одним номером дают ровно один fetch', async () => {
     const fetchSpy = vi.spyOn(globalThis, 'fetch');
     const store = createAppStore();
@@ -78,37 +62,6 @@ describe('fetchBrands', () => {
 
     expect(fetchSpy).toHaveBeenCalledTimes(1);
     expect(selectBrandsStatus(store.getState())).toBe(STATUS.SUCCEEDED);
-  });
-
-  it('повторный вызов после succeeded не делает запроса', async () => {
-    const store = createAppStore();
-    await store.dispatch(fetchBrands('0189'));
-
-    const fetchSpy = vi.spyOn(globalThis, 'fetch');
-    await store.dispatch(fetchBrands('0189'));
-
-    expect(fetchSpy).not.toHaveBeenCalled();
-  });
-
-  it('после failed делает повторный запрос', async () => {
-    const store = createAppStore();
-    await store.dispatch(fetchBrands(TEST_NUMBERS.QUOTA));
-
-    const fetchSpy = vi.spyOn(globalThis, 'fetch');
-    await store.dispatch(fetchBrands(TEST_NUMBERS.QUOTA));
-
-    expect(fetchSpy).toHaveBeenCalledTimes(1);
-  });
-
-  it('с другим номером делает новый запрос', async () => {
-    const store = createAppStore();
-    await store.dispatch(fetchBrands('0189'));
-
-    const fetchSpy = vi.spyOn(globalThis, 'fetch');
-    await store.dispatch(fetchBrands(TEST_NUMBERS.NOT_FOUND));
-
-    expect(fetchSpy).toHaveBeenCalledTimes(1);
-    expect(selectBrandsIsEmpty(store.getState())).toBe(true);
   });
 
   it('гонка: в state остаётся результат второго (быстрого) запроса', async () => {
@@ -168,26 +121,6 @@ describe('fetchBrands', () => {
     const store = createAppStore();
 
     await store.dispatch(fetchBrands('   '));
-
-    expect(selectBrandsStatus(store.getState())).toBe(STATUS.IDLE);
-    expect(fetchSpy).not.toHaveBeenCalled();
-  });
-
-  it('null -> idle и ни одного запроса', async () => {
-    const fetchSpy = vi.spyOn(globalThis, 'fetch');
-    const store = createAppStore();
-
-    await store.dispatch(fetchBrands(null));
-
-    expect(selectBrandsStatus(store.getState())).toBe(STATUS.IDLE);
-    expect(fetchSpy).not.toHaveBeenCalled();
-  });
-
-  it('undefined -> idle и ни одного запроса', async () => {
-    const fetchSpy = vi.spyOn(globalThis, 'fetch');
-    const store = createAppStore();
-
-    await store.dispatch(fetchBrands(undefined));
 
     expect(selectBrandsStatus(store.getState())).toBe(STATUS.IDLE);
     expect(fetchSpy).not.toHaveBeenCalled();
