@@ -29,12 +29,19 @@ function OffersResults({ requested, analogues }) {
 
   return (
     <>
-      {requested !== null ? (
-        <section>
-          <h2 className="h5">Искомая деталь</h2>
-          <OffersTable items={[requested]} caption="Искомая деталь" />
-        </section>
-      ) : null}
+      <section>
+        <h2 className="h5">Искомая деталь</h2>
+        <OffersTable
+          items={requested ? [requested] : []}
+          caption="Искомая деталь"
+          rowClassName={
+            requested && requested.totalStock > 0
+              ? 'table-success'
+              : 'table-danger'
+          }
+          emptyMessage="Искомая деталь не найдена"
+        />
+      </section>
 
       <h2 className="h5 mt-4">Аналоги</h2>
 

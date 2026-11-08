@@ -105,6 +105,12 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
+
+  /* Подсветка карточки целиком (иначе тёмная тема красит только tr, не ячейки) */
+  .parts-table tbody tr.table-success,
+  .parts-table tbody tr.table-danger {
+    background-color: var(--bs-table-bg);
+  }
 }
 
 /*
@@ -130,6 +136,20 @@
   [data-bs-theme='dark'] .parts-table tr {
     background-color: var(--bs-tertiary-bg);
   }
+}
+
+/*
+ * table-success/danger в BS 5.3 — светлый фон и тёмный текст.
+ * В тёмной теме .text-muted и .btn-link остаются светлыми → низкий контраст.
+ */
+[data-bs-theme='dark'] .parts-table tr.table-success .text-muted,
+[data-bs-theme='dark'] .parts-table tr.table-danger .text-muted {
+  color: rgba(0, 0, 0, 0.55) !important;
+}
+
+[data-bs-theme='dark'] .parts-table tr.table-success .btn-link,
+[data-bs-theme='dark'] .parts-table tr.table-danger .btn-link {
+  color: #212529;
 }
 
 /* Список брендов */

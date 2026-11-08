@@ -5,7 +5,10 @@ import WarehouseList from './WarehouseList.jsx';
 
 /**
  * Строка позиции в таблице предложений (с раскрываемым списком складов).
- * @extends {Component<{ part: import('../api/normalizers.js').Part }>}
+ * @extends {Component<{
+ *   part: import('../api/normalizers.js').Part,
+ *   rowClassName?: string,
+ * }>}
  */
 class PartRow extends Component {
   state = { expanded: false };
@@ -18,13 +21,13 @@ class PartRow extends Component {
   };
 
   render() {
-    const { part } = this.props;
+    const { part, rowClassName } = this.props;
     const { expanded } = this.state;
     const warehousesId = `warehouses-${part.id}`;
 
     return (
       <Fragment>
-        <tr role="row">
+        <tr role="row" className={rowClassName}>
           <td role="cell">
             <div className="fw-semibold">{part.brand}</div>
             <div>{part.name}</div>

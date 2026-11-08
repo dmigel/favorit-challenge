@@ -3,11 +3,16 @@ import PartRow from './PartRow.jsx';
 
 /**
  * Таблица позиций (искомая деталь или аналоги).
- * @extends {Component<{ items: import('../api/normalizers.js').Part[], caption: string }>}
+ * @extends {Component<{
+ *   items: import('../api/normalizers.js').Part[],
+ *   caption: string,
+ *   rowClassName?: string,
+ *   emptyMessage?: string,
+ * }>}
  */
 class OffersTable extends Component {
   render() {
-    const { items, caption } = this.props;
+    const { items, caption, rowClassName, emptyMessage } = this.props;
 
     return (
       <table
@@ -29,9 +34,17 @@ class OffersTable extends Component {
           </tr>
         </thead>
         <tbody role="rowgroup">
-          {items.map((part) => (
-            <PartRow key={part.id} part={part} />
-          ))}
+          {items.length === 0 && emptyMessage ? (
+            <tr role="row" className={rowClassName}>
+              <td role="cell" colSpan={3}>
+                {emptyMessage}
+              </td>
+            </tr>
+          ) : (
+            items.map((part) => (
+              <PartRow key={part.id} part={part} rowClassName={rowClassName} />
+            ))
+          )}
         </tbody>
       </table>
     );

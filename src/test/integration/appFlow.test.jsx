@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { http, HttpResponse } from 'msw';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import App from '../../App.jsx';
+import offersFixture from '../fixtures/offers-meyle-7160500039S.json';
 import { renderWithProviders } from '../renderWithProviders.jsx';
 import { server } from '../server.js';
 
@@ -53,9 +54,19 @@ describe('appFlow', () => {
       ),
     ).toBeInTheDocument();
 
-    expect(
-      within(screen.getByRole('table', { name: 'Аналоги' })).getAllByRole('row'),
-    ).toHaveLength(5);
+    const requestedRows = within(
+      screen.getByRole('table', { name: 'Искомая деталь' }),
+    ).getAllByRole('row');
+    expect(requestedRows[1]).toHaveClass('table-success');
+
+    const analogueRows = within(
+      screen.getByRole('table', { name: 'Аналоги' }),
+    ).getAllByRole('row');
+    expect(analogueRows).toHaveLength(5);
+    for (const row of analogueRows) {
+      expect(row).not.toHaveClass('table-success');
+      expect(row).not.toHaveClass('table-danger');
+    }
 
     await user.click(screen.getByLabelText('Только в наличии'));
 
@@ -85,6 +96,49 @@ describe('appFlow', () => {
     ).toHaveLength(4);
 
     expect(fetchSpy).toHaveBeenCalledTimes(2);
+  });
+
+  it('искомая деталь не найдена', async () => {
+    server.use(
+      http.get('*/hs/hsprice/', () =>
+        HttpResponse.json({
+          goods: [
+            {
+              brand: '',
+              name: '',
+              number: '',
+              goodsID: '00000000-0000-0000-0000-000000000000',
+              count: 0,
+              price: 0,
+              rate: 0,
+              warehouses: [],
+              analogues: offersFixture.goods[0].analogues,
+            },
+          ],
+        }),
+      ),
+    );
+
+    renderWithProviders(<App />, {
+      route: '/offers?number=7160500039S&brand=MEYLE',
+    });
+
+    expect(
+      await screen.findByRole(
+        'heading',
+        { name: 'Искомая деталь' },
+        { timeout: 2000 },
+      ),
+    ).toBeInTheDocument();
+
+    const requestedRows = within(
+      screen.getByRole('table', { name: 'Искомая деталь' }),
+    ).getAllByRole('row');
+    expect(requestedRows).toHaveLength(2);
+    expect(requestedRows[1]).toHaveClass('table-danger');
+    expect(requestedRows[1]).toHaveTextContent('Искомая деталь не найдена');
+
+    expect(screen.getByRole('table', { name: 'Аналоги' })).toBeInTheDocument();
   });
 
   it('ошибка сети на этапе 2 и повтор', async () => {
