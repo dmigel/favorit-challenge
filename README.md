@@ -225,5 +225,3 @@ npm i --no-save sharp && node scripts/generate-icons.mjs
 - У API есть квота запросов — отсюда debounce и минимальная длина автопоиска.
 - Фавикон чёрный (на тёмной вкладке браузера может сливаться).
 - Язык интерфейса — русский; валюта — рубли (`Intl.NumberFormat` с локалью `ru-RU`).
-
-Полное ТЗ и заметки по API: [docs/SPEC.md](docs/SPEC.md).
