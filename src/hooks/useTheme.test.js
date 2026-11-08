@@ -24,26 +24,36 @@ describe('useTheme', () => {
     expect(localStorage.getItem('theme')).toBeNull();
   });
 
-  it('toggleTheme переключает тему, атрибут и localStorage', () => {
+  it('setTheme(dark) меняет theme, атрибут и localStorage', () => {
     const { result } = renderHook(() => useTheme());
 
     expect(result.current.theme).toBe('light');
     expect(localStorage.getItem('theme')).toBeNull();
 
     act(() => {
-      result.current.toggleTheme();
+      result.current.setTheme('dark');
     });
 
     expect(result.current.theme).toBe('dark');
     expect(document.documentElement.getAttribute('data-bs-theme')).toBe('dark');
     expect(localStorage.getItem('theme')).toBe('dark');
+  });
+
+  it('setTheme с недопустимым значением ничего не меняет', () => {
+    const { result } = renderHook(() => useTheme());
 
     act(() => {
-      result.current.toggleTheme();
+      result.current.setTheme('x');
     });
 
     expect(result.current.theme).toBe('light');
     expect(document.documentElement.getAttribute('data-bs-theme')).toBe('light');
-    expect(localStorage.getItem('theme')).toBe('light');
+    expect(localStorage.getItem('theme')).toBeNull();
+  });
+
+  it('без вызова setTheme в localStorage ничего не пишется', () => {
+    renderHook(() => useTheme());
+
+    expect(localStorage.getItem('theme')).toBeNull();
   });
 });

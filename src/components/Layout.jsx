@@ -10,17 +10,17 @@ function Layout() {
 
   return (
     <div className="d-flex flex-column min-vh-100">
-      <nav className="navbar navbar-dark bg-primary py-2">
+      <nav className="navbar navbar-dark app-navbar py-2">
         <div className="container d-flex align-items-center">
           <Link
             to="/"
-            className="navbar-brand p-0 m-0"
+            className="navbar-brand pt-2 pb-2 m-0"
             aria-label="Подбор автозапчастей — на главную"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="148"
-              height="70"
+              width="118.4"
+              height="56"
               viewBox="0 0 148 70"
               fill="none"
               aria-hidden="true"

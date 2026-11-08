@@ -44,7 +44,7 @@ describe('Layout', () => {
       '/',
     );
     expect(
-      screen.getByRole('button', { name: /Включить (тёмную|светлую) тему/i }),
+      screen.getByRole('button', { name: 'Выбрать тему оформления' }),
     ).toBeInTheDocument();
     expect(screen.queryByRole('contentinfo')).toBeNull();
   });

@@ -7,12 +7,23 @@
   --bs-table-border-color: var(--bs-border-color);
 }
 
-/* Крупное поле поиска от md и выше; на мобильном — обычный размер (16px, без zoom iOS) */
-@media (min-width: 768px) {
-  .search-group > .form-control,
+/* Шапка: в светлой теме — primary, в тёмной переопределяется ниже */
+.app-navbar {
+  background-color: var(--bs-primary);
+}
+
+/* На мобильном сбрасываем размеры input-group-lg до обычных Lux */
+@media (max-width: 767.98px) {
+  .search-group > .form-control {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0;
+  }
+
   .search-group > .btn {
-    padding: 0.5rem 1rem;
-    font-size: 1.25rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    border-radius: 0;
   }
 }
 
@@ -89,4 +100,80 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
+}
+
+/*
+ * Палитра и переопределения Lux для тёмной темы.
+ * Текст на поверхностях — светлый (var(--bs-body-color)); чёрный на сером не используем.
+ */
+[data-bs-theme='dark'] {
+  /*--bs-body-bg: #1f2327;*/
+  --bs-tertiary-bg: #2b3035;
+  --bs-secondary-bg: #343a40;
+  --bs-border-color: #495057;
+  --bs-body-color: #dee2e6;
+}
+
+/* Шапка на поверхности tertiary вместо primary */
+[data-bs-theme='dark'] .app-navbar {
+  /*background-color: var(--bs-tertiary-bg);*/
+  /*border-bottom: 1px solid var(--bs-border-color);*/
+}
+
+/* Таблицы: фон и наведение на поверхностях темы */
+[data-bs-theme='dark'] .table {
+  --bs-table-bg: var(--bs-tertiary-bg);
+  --bs-table-hover-bg: var(--bs-secondary-bg);
+  --bs-table-color: var(--bs-body-color);
+}
+
+/* Мобильные карточки таблицы — тот же фон поверхности */
+@media (max-width: 767.98px) {
+  [data-bs-theme='dark'] .parts-table tr {
+    background-color: var(--bs-tertiary-bg);
+  }
+}
+
+/* Список брендов */
+[data-bs-theme='dark'] .list-group {
+  --bs-list-group-bg: var(--bs-tertiary-bg);
+  --bs-list-group-color: var(--bs-body-color);
+  --bs-list-group-action-hover-bg: var(--bs-secondary-bg);
+  --bs-list-group-action-hover-color: var(--bs-body-color);
+}
+
+/* Поля ввода */
+[data-bs-theme='dark'] .form-control,
+[data-bs-theme='dark'] .form-select {
+  background-color: var(--bs-tertiary-bg);
+  color: var(--bs-body-color);
+  border-color: var(--bs-border-color);
+}
+
+[data-bs-theme='dark'] .form-control:focus,
+[data-bs-theme='dark'] .form-select:focus {
+  background-color: var(--bs-tertiary-bg);
+  color: var(--bs-body-color);
+  border-color: var(--bs-border-color);
+}
+
+[data-bs-theme='dark'] .form-control::placeholder {
+  color: var(--bs-secondary-color);
+}
+
+/*
+ * Кнопка primary: в Lux тёмная тема задаёт чёрную заливку
+ * ([data-bs-theme=dark] .btn-primary { --bs-btn-bg:#080808; --bs-btn-hover-bg:#000 }).
+ * Тот же селектор ниже (app.css после bootstrap) перебивает переменные на светлую кнопку.
+ */
+[data-bs-theme='dark'] .btn-primary {
+  --bs-btn-bg: #e9ecef;
+  --bs-btn-color: #212529;
+  --bs-btn-border-color: #e9ecef;
+  --bs-btn-hover-bg: #ffffff;
+  --bs-btn-hover-color: #212529;
+  --bs-btn-hover-border-color: #ffffff;
+  --bs-btn-disabled-bg: #495057;
+  --bs-btn-disabled-color: #adb5bd;
+  --bs-btn-disabled-border-color: #495057;
 }

@@ -10,7 +10,7 @@ describe('SearchForm', () => {
     expect(screen.getByLabelText('Номер детали')).toHaveValue('0189');
     const group = container.querySelector('.input-group');
     expect(group).toHaveClass('search-group');
-    expect(group).not.toHaveClass('input-group-lg');
+    expect(group).toHaveClass('input-group-lg');
   });
 
 

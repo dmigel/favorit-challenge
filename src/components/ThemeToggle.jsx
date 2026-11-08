@@ -1,47 +1,64 @@
+import { useDropdown } from '../hooks/useDropdown.js';
 import { useTheme } from '../hooks/useTheme.js';
+import { CircleHalfIcon, MoonIcon, SunIcon } from './ThemeIcons.jsx';
+
+const THEME_OPTIONS = [
+  { value: 'light', label: 'Светлая', Icon: SunIcon },
+  { value: 'dark', label: 'Тёмная', Icon: MoonIcon },
+];
 
 /**
- * Кнопка переключения светлой и тёмной темы в шапке.
+ * Выпадающий выбор светлой/тёмной темы в шапке.
  */
 function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
-  const label =
-    theme === 'dark' ? 'Включить светлую тему' : 'Включить тёмную тему';
+  const { theme, setTheme } = useTheme();
+  const dropdown = useDropdown();
+  const { isOpen, toggle, containerRef, toggleRef } = dropdown;
+
+  /**
+   * Выбирает тему, закрывает меню и возвращает фокус на кнопку.
+   * @param {'light' | 'dark'} value
+   */
+  function handleSelect(value) {
+    setTheme(value);
+    dropdown.close();
+    dropdown.toggleRef.current?.focus();
+  }
 
   return (
-    <button
-      type="button"
-      className="btn btn-outline-light btn-sm d-inline-flex align-items-center ms-auto"
-      onClick={toggleTheme}
-      aria-label={label}
-      title={label}
-    >
-      {theme === 'dark' ? (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0-5a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1Zm0 16a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1ZM3 11a1 1 0 1 0 0 2h1a1 1 0 1 0 0-2H3Zm16 0a1 1 0 1 0 0 2h1a1 1 0 1 0 0-2h-1ZM5.64 5.64a1 1 0 0 1 1.41 0l.71.71a1 1 0 0 1-1.41 1.41l-.71-.71a1 1 0 0 1 0-1.41Zm10.61 10.61a1 1 0 0 1 1.41 0l.71.71a1 1 0 1 1-1.41 1.41l-.71-.71a1 1 0 0 1 0-1.41ZM18.36 5.64a1 1 0 0 1 0 1.41l-.71.71a1 1 0 1 1-1.41-1.41l.71-.71a1 1 0 0 1 1.41 0ZM7.05 16.95a1 1 0 0 1 0 1.41l-.71.71a1 1 0 1 1-1.41-1.41l.71-.71a1 1 0 0 1 1.41 0Z" />
-        </svg>
-      ) : (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <path d="M21 14.5A8.5 8.5 0 0 1 9.5 3a7 7 0 1 0 11.5 11.5Z" />
-        </svg>
-      )}
-    </button>
+    <div className="dropdown ms-auto" ref={containerRef}>
+      <button
+        type="button"
+        id="theme-menu"
+        ref={toggleRef}
+        className="btn btn-link text-white text-decoration-none dropdown-toggle d-flex align-items-center"
+        aria-label="Выбрать тему оформления"
+        aria-haspopup="true"
+        aria-expanded={isOpen}
+        onClick={toggle}
+      >
+        <CircleHalfIcon />
+      </button>
+      <ul
+        className={`dropdown-menu dropdown-menu-end${isOpen ? ' show' : ''}`}
+        data-bs-popper="static"
+        aria-labelledby="theme-menu"
+      >
+        {THEME_OPTIONS.map(({ value, label, Icon }) => (
+          <li key={value}>
+            <button
+              type="button"
+              className="dropdown-item d-flex align-items-center"
+              aria-pressed={theme === value}
+              onClick={() => handleSelect(value)}
+            >
+              <Icon />
+              <span className="ms-2">{label}</span>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
