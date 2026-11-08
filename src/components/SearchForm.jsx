@@ -67,7 +67,7 @@ class SearchForm extends Component {
         <label htmlFor={INPUT_ID} className="form-label">
           Номер детали
         </label>
-        <div className="input-group input-group-lg">
+        <div className="input-group search-group">
           <input
             id={INPUT_ID}
             type="text"

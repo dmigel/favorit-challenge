@@ -5,10 +5,14 @@ import SearchForm from './SearchForm.jsx';
 
 describe('SearchForm', () => {
   it('рендерит label и поле с initialValue', () => {
-    render(<SearchForm initialValue="0189" onSubmit={vi.fn()} />);
+    const { container } = render(<SearchForm initialValue="0189" onSubmit={vi.fn()} />);
 
     expect(screen.getByLabelText('Номер детали')).toHaveValue('0189');
+    const group = container.querySelector('.input-group');
+    expect(group).toHaveClass('search-group');
+    expect(group).not.toHaveClass('input-group-lg');
   });
+
 
   it('кнопка disabled при пустом и пробельном значении', async () => {
     const user = userEvent.setup();

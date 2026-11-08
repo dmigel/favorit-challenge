@@ -10,27 +10,30 @@ export class OffersTable extends Component {
     const { items, caption } = this.props;
 
     return (
-      <div className="table-responsive">
-        <table className="table table-hover align-middle mb-0">
-          <caption className="visually-hidden">{caption}</caption>
-          <thead>
-            <tr>
-              <th scope="col">Позиция</th>
-              <th scope="col" className="text-end">
-                Цена
-              </th>
-              <th scope="col" className="text-end">
-                Остаток
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {items.map((part) => (
-              <PartRow key={part.id} part={part} />
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <table
+        className="table table-hover align-middle mb-0 parts-table"
+        role="table"
+      >
+        <caption className="visually-hidden">{caption}</caption>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th scope="col" role="columnheader">
+              Позиция
+            </th>
+            <th scope="col" className="text-end" role="columnheader">
+              Цена
+            </th>
+            <th scope="col" className="text-end" role="columnheader">
+              Остаток
+            </th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          {items.map((part) => (
+            <PartRow key={part.id} part={part} />
+          ))}
+        </tbody>
+      </table>
     );
   }
 }

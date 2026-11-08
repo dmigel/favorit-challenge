@@ -26,7 +26,7 @@ function OffersToolbar({
 
   return (
     <div className="row g-2 align-items-end mb-3">
-      <div className="col-12 col-md-5">
+      <div className="col-12 col-md-6">
         <label className="form-label" htmlFor={searchId}>
           Поиск среди аналогов
         </label>
@@ -40,7 +40,7 @@ function OffersToolbar({
           onChange={(event) => onTextChange(event.target.value)}
         />
       </div>
-      <div className="col-12 col-md-4">
+      <div className="col-12 col-md-6">
         <label className="form-label" htmlFor={sortId}>
           Сортировка
         </label>
@@ -57,7 +57,7 @@ function OffersToolbar({
           ))}
         </select>
       </div>
-      <div className="col-12 col-md-3">
+      <div className="col-12 col-md-12">
         <div className="form-check form-switch">
           <input
             id={stockId}

@@ -8,7 +8,7 @@ describe('App', () => {
     renderWithProviders(<App />, { route: '/' });
 
     expect(screen.getByRole('heading', { name: 'Поиск по номеру детали' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Подбор автозапчастей' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /на главную/i })).toBeInTheDocument();
     expect(screen.getByText('Введите номер детали', { exact: false })).toBeInTheDocument();
   });
 

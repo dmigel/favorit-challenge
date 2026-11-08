@@ -9,12 +9,13 @@ const { analogues } = normalizeOffers(offersFixture.goods);
 
 describe('OffersTable', () => {
   it('показывает заголовки, caption и строки аналогов', () => {
-    render(<OffersTable items={analogues} caption="Аналоги" />);
+    const { container } = render(<OffersTable items={analogues} caption="Аналоги" />);
 
     const table = screen.getByRole('table', { name: 'Аналоги' });
     expect(within(table).getByRole('columnheader', { name: 'Позиция' })).toBeInTheDocument();
     expect(within(table).getByRole('columnheader', { name: 'Цена' })).toBeInTheDocument();
     expect(within(table).getByRole('columnheader', { name: 'Остаток' })).toBeInTheDocument();
+    expect(container.querySelector('.table-responsive')).toBeNull();
 
     expect(within(table).getByText('VEMO/VAICO')).toBeInTheDocument();
     expect(within(table).getAllByText('Нет в наличии').length).toBeGreaterThanOrEqual(1);
@@ -38,8 +39,12 @@ describe('OffersTable', () => {
     await user.click(button);
     expect(button).toHaveAttribute('aria-expanded', 'true');
     expect(screen.getByRole('list', { name: 'Склады' })).toBeInTheDocument();
+    expect(document.getElementById(`warehouses-${rts.id}`)).toHaveClass(
+      'parts-table__details',
+    );
 
     await user.click(button);
     expect(button).toHaveAttribute('aria-expanded', 'false');
   });
 });
+

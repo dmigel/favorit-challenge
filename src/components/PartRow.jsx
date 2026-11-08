@@ -23,8 +23,8 @@ export class PartRow extends Component {
 
     return (
       <Fragment>
-        <tr>
-          <td>
+        <tr role="row">
+          <td role="cell">
             <div className="fw-semibold">{part.brand}</div>
             <div>{part.name}</div>
             <div className="small text-muted">№ {part.number}</div>
@@ -43,10 +43,10 @@ export class PartRow extends Component {
               </button>
             ) : null}
           </td>
-          <td className="text-end text-nowrap">
+          <td className="text-end text-nowrap" data-label="Цена" role="cell">
             {part.minPrice !== null ? `от ${formatPrice(part.minPrice)}` : '—'}
           </td>
-          <td className="text-end">
+          <td className="text-end" data-label="Остаток" role="cell">
             {part.totalStock > 0 ? (
               <span className="badge text-bg-success">{part.totalStock}</span>
             ) : (
@@ -55,8 +55,8 @@ export class PartRow extends Component {
           </td>
         </tr>
         {expanded ? (
-          <tr id={warehousesId}>
-            <td colSpan={3}>
+          <tr id={warehousesId} className="parts-table__details" role="row">
+            <td colSpan={3} role="cell">
               <WarehouseList offers={part.offers} />
             </td>
           </tr>

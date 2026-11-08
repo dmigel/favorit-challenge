@@ -44,11 +44,18 @@ function renderPartRow(part) {
 
 describe('PartRow', () => {
   it('у VEMO/VAICO нет складов, цена «—» и бейдж «Нет в наличии»', () => {
-    renderPartRow(vemo);
+    const { container } = renderPartRow(vemo);
 
     expect(screen.getByText('Нет в наличии')).toBeInTheDocument();
     expect(screen.getByText('—')).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /Склады/ })).not.toBeInTheDocument();
+    expect(container.querySelector('.table-responsive')).toBeNull();
+
+    const row = screen.getByText('VEMO/VAICO').closest('tr');
+    const cells = row.querySelectorAll('td');
+    expect(cells[1]).toHaveAttribute('data-label', 'Цена');
+    expect(cells[2]).toHaveAttribute('data-label', 'Остаток');
+    expect(cells[0].hasAttribute('data-label')).toBe(false);
   });
 
   it('у RTS кнопка «Склады» раскрывает и скрывает список', async () => {
@@ -63,11 +70,15 @@ describe('PartRow', () => {
     await user.click(button);
     expect(button).toHaveAttribute('aria-expanded', 'true');
     expect(screen.getByRole('list', { name: 'Склады' })).toBeInTheDocument();
+    expect(document.getElementById(`warehouses-${rts.id}`)).toHaveClass(
+      'parts-table__details',
+    );
 
     await user.click(button);
     expect(button).toHaveAttribute('aria-expanded', 'false');
     expect(screen.queryByRole('list', { name: 'Склады' })).not.toBeInTheDocument();
   });
+
 
   it('бейдж «Невозвратная позиция» только при notRefund', () => {
     const { rerender } = render(

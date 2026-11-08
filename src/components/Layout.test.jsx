@@ -39,10 +39,14 @@ describe('Layout', () => {
       </Routes>,
     );
 
-    expect(screen.getByRole('link', { name: 'Подбор автозапчастей' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /на главную/i })).toHaveAttribute(
       'href',
       '/',
     );
+    expect(
+      screen.getByRole('button', { name: /Включить (тёмную|светлую) тему/i }),
+    ).toBeInTheDocument();
+    expect(screen.queryByRole('contentinfo')).toBeNull();
   });
 
   it('вложенный маршрут рендерится в Outlet', () => {
@@ -67,7 +71,7 @@ describe('Layout', () => {
     );
 
     expect(screen.getByRole('alert')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Подбор автозапчастей' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /на главную/i })).toBeInTheDocument();
   });
 
   it('переход по ссылке бренда на "/" сбрасывает ошибку', async () => {
@@ -85,7 +89,7 @@ describe('Layout', () => {
 
     expect(screen.getByRole('alert')).toBeInTheDocument();
 
-    await user.click(screen.getByRole('link', { name: 'Подбор автозапчастей' }));
+    await user.click(screen.getByRole('link', { name: /на главную/i }));
 
     expect(screen.getByText('Контент маршрута')).toBeInTheDocument();
     expect(screen.queryByRole('alert')).not.toBeInTheDocument();

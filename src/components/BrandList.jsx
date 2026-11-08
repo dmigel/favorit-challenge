@@ -28,7 +28,7 @@ export class BrandList extends Component {
               >
                 <div className="d-flex flex-column flex-sm-row justify-content-between gap-1">
                   <div>
-                    <strong>{item.brand}</strong>
+                    <strong className="text-body-emphasis">{item.brand}</strong>
                     <div className="small text-muted">
                       {item.name} · № {item.number}
                     </div>
