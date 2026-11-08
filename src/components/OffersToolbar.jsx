@@ -1,79 +1,100 @@
-import { useId } from 'react';
+import { Component } from 'react';
 import { SORT_OPTIONS } from '../utils/constants.js';
+
+const SEARCH_ID = 'offers-toolbar-search';
+const SORT_ID = 'offers-toolbar-sort';
+const STOCK_ID = 'offers-toolbar-stock';
 
 /**
  * Панель фильтров и сортировки списка аналогов.
- * @param {object} props
- * @param {string} props.text — текст поиска
- * @param {boolean} props.inStockOnly — только позиции с остатком
- * @param {string} props.sort — текущая сортировка
- * @param {(value: string) => void} props.onTextChange
- * @param {(checked: boolean) => void} props.onInStockOnlyChange
- * @param {(value: string) => void} props.onSortChange
+ * @extends {Component<{
+ *   text: string,
+ *   inStockOnly: boolean,
+ *   sort: string,
+ *   onTextChange: (value: string) => void,
+ *   onInStockOnlyChange: (checked: boolean) => void,
+ *   onSortChange: (value: string) => void
+ * }>}
  */
-function OffersToolbar({
-  text,
-  inStockOnly,
-  sort,
-  onTextChange,
-  onInStockOnlyChange,
-  onSortChange,
-}) {
-  const baseId = useId();
-  const searchId = `${baseId}-search`;
-  const sortId = `${baseId}-sort`;
-  const stockId = `${baseId}-stock`;
+export class OffersToolbar extends Component {
+  /**
+   * Передаёт текст поиска родителю.
+   * @param {import('react').ChangeEvent<HTMLInputElement>} event
+   */
+  handleTextChange = (event) => {
+    this.props.onTextChange(event.target.value);
+  };
 
-  return (
-    <div className="row g-2 align-items-end mb-3">
-      <div className="col-12 col-md-6">
-        <label className="form-label" htmlFor={searchId}>
-          Поиск среди аналогов
-        </label>
-        <input
-          id={searchId}
-          type="search"
-          className="form-control"
-          value={text}
-          autoComplete="off"
-          placeholder="Бренд, название или номер"
-          onChange={(event) => onTextChange(event.target.value)}
-        />
-      </div>
-      <div className="col-12 col-md-6">
-        <label className="form-label" htmlFor={sortId}>
-          Сортировка
-        </label>
-        <select
-          id={sortId}
-          className="form-select"
-          value={sort}
-          onChange={(event) => onSortChange(event.target.value)}
-        >
-          {SORT_OPTIONS.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className="col-12 col-md-12">
-        <div className="form-check form-switch">
-          <input
-            id={stockId}
-            type="checkbox"
-            className="form-check-input"
-            role="switch"
-            checked={inStockOnly}
-            onChange={(event) => onInStockOnlyChange(event.target.checked)}
-          />
-          <label className="form-check-label" htmlFor={stockId}>
-            Только в наличии
+  /**
+   * Передаёт состояние фильтра «только в наличии» родителю.
+   * @param {import('react').ChangeEvent<HTMLInputElement>} event
+   */
+  handleInStockChange = (event) => {
+    this.props.onInStockOnlyChange(event.target.checked);
+  };
+
+  /**
+   * Передаёт выбранную сортировку родителю.
+   * @param {import('react').ChangeEvent<HTMLSelectElement>} event
+   */
+  handleSortChange = (event) => {
+    this.props.onSortChange(event.target.value);
+  };
+
+  render() {
+    const { text, inStockOnly, sort } = this.props;
+
+    return (
+      <div className="row g-2 align-items-end mb-3">
+        <div className="col-12 col-md-6">
+          <label className="form-label" htmlFor={SEARCH_ID}>
+            Поиск среди аналогов
           </label>
+          <input
+            id={SEARCH_ID}
+            type="search"
+            className="form-control"
+            value={text}
+            autoComplete="off"
+            placeholder="Бренд, название или номер"
+            onChange={this.handleTextChange}
+          />
+        </div>
+        <div className="col-12 col-md-6">
+          <label className="form-label" htmlFor={SORT_ID}>
+            Сортировка
+          </label>
+          <select
+            id={SORT_ID}
+            className="form-select"
+            value={sort}
+            onChange={this.handleSortChange}
+          >
+            {SORT_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="col-12 col-md-12">
+          <div className="form-check form-switch">
+            <input
+              id={STOCK_ID}
+              type="checkbox"
+              className="form-check-input"
+              role="switch"
+              checked={inStockOnly}
+              onChange={this.handleInStockChange}
+            />
+            <label className="form-check-label" htmlFor={STOCK_ID}>
+              Только в наличии
+            </label>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default OffersToolbar;

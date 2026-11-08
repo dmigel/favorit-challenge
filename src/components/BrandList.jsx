@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { selectBrandsItems } from '../features/brands/selectors.js';
 import { formatPrice } from '../utils/format.js';
 import { buildOffersPath } from '../utils/routes.js';
+import StockBadge from './StockBadge.jsx';
 
 /**
  * Список производителей по номеру детали.
@@ -34,13 +35,7 @@ export class BrandList extends Component {
                     </div>
                   </div>
                   <div className="text-sm-end">
-                    {item.totalStock > 0 ? (
-                      <span className="badge text-bg-success">
-                        В наличии: {item.totalStock}
-                      </span>
-                    ) : (
-                      <span className="badge text-bg-secondary">Нет в наличии</span>
-                    )}
+                    <StockBadge stock={item.totalStock} variant="labeled" />
                     {item.minPrice != null ? (
                       <span className="ms-2">от {formatPrice(item.minPrice)}</span>
                     ) : null}

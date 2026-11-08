@@ -4,6 +4,11 @@
 export const APP_TITLE = 'Подбор автозапчастей';
 
 /**
+ * Запасной текст, если сообщение об ошибке неизвестно.
+ */
+export const UNKNOWN_ERROR_MESSAGE = 'Неизвестная ошибка';
+
+/**
  * Ключ localStorage для сохранённой темы оформления (`dark` | `light`).
  * Дублируется в inline-скрипте index.html (FOUC).
  */

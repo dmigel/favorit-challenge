@@ -5,7 +5,7 @@ import ErrorAlert from './ErrorAlert.jsx';
  * Граница ошибок: ловит сбои рендера дочерних компонентов.
  * @extends {Component<{ children: import('react').ReactNode }, { hasError: boolean }>}
  */
-export class ErrorBoundary extends Component {
+class ErrorBoundary extends Component {
   state = { hasError: false };
 
   /**

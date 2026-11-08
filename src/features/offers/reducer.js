@@ -15,7 +15,7 @@ import { OFFERS, OFFERS_RESET } from './actionTypes.js';
  * Начальное состояние среза offers.
  * @type {OffersState}
  */
-export const initialState = {
+const initialState = {
   status: STATUS.IDLE,
   query: null,
   requested: null,

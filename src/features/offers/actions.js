@@ -7,7 +7,7 @@ import { OFFERS, OFFERS_RESET } from './actionTypes.js';
  * @param {{ number: string, brand: string }} query
  * @returns {{ type: string, query: { number: string, brand: string } }}
  */
-export function offersRequest(query) {
+function offersRequest(query) {
   return { type: OFFERS.REQUEST, query };
 }
 
@@ -17,7 +17,7 @@ export function offersRequest(query) {
  * @param {import('../../api/normalizers.js').OffersResult} result
  * @returns {{ type: string, query: { number: string, brand: string }, payload: import('../../api/normalizers.js').OffersResult }}
  */
-export function offersSuccess(query, result) {
+function offersSuccess(query, result) {
   return { type: OFFERS.SUCCESS, query, payload: result };
 }
 
@@ -27,7 +27,7 @@ export function offersSuccess(query, result) {
  * @param {{ kind: string, message: string }} error
  * @returns {{ type: string, query: { number: string, brand: string }, error: { kind: string, message: string } }}
  */
-export function offersFailure(query, error) {
+function offersFailure(query, error) {
   return { type: OFFERS.FAILURE, query, error };
 }
 
@@ -35,7 +35,7 @@ export function offersFailure(query, error) {
  * Экшен сброса состояния предложений.
  * @returns {{ type: string }}
  */
-export function offersReset() {
+function offersReset() {
   return { type: OFFERS_RESET };
 }
 

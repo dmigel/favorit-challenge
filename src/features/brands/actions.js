@@ -7,7 +7,7 @@ import { BRANDS, BRANDS_RESET } from './actionTypes.js';
  * @param {{ number: string }} query
  * @returns {{ type: string, query: { number: string } }}
  */
-export function brandsRequest(query) {
+function brandsRequest(query) {
   return { type: BRANDS.REQUEST, query };
 }
 
@@ -17,7 +17,7 @@ export function brandsRequest(query) {
  * @param {import('../../api/normalizers.js').Part[]} items
  * @returns {{ type: string, query: { number: string }, payload: import('../../api/normalizers.js').Part[] }}
  */
-export function brandsSuccess(query, items) {
+function brandsSuccess(query, items) {
   return { type: BRANDS.SUCCESS, query, payload: items };
 }
 
@@ -27,7 +27,7 @@ export function brandsSuccess(query, items) {
  * @param {{ kind: string, message: string }} error
  * @returns {{ type: string, query: { number: string }, error: { kind: string, message: string } }}
  */
-export function brandsFailure(query, error) {
+function brandsFailure(query, error) {
   return { type: BRANDS.FAILURE, query, error };
 }
 
@@ -35,7 +35,7 @@ export function brandsFailure(query, error) {
  * Экшен сброса состояния брендов.
  * @returns {{ type: string }}
  */
-export function brandsReset() {
+function brandsReset() {
   return { type: BRANDS_RESET };
 }
 

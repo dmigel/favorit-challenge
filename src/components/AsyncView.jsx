@@ -1,4 +1,5 @@
 import { STATUS } from '../store/helpers.js';
+import { UNKNOWN_ERROR_MESSAGE } from '../utils/constants.js';
 import EmptyState from './EmptyState.jsx';
 import ErrorAlert from './ErrorAlert.jsx';
 import Loader from './Loader.jsx';
@@ -31,7 +32,7 @@ function AsyncView({
 
   if (status === STATUS.FAILED) {
     return (
-      <ErrorAlert message={error?.message ?? 'Неизвестная ошибка'} onRetry={onRetry} />
+      <ErrorAlert message={error?.message ?? UNKNOWN_ERROR_MESSAGE} onRetry={onRetry} />
     );
   }
 

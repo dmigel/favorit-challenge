@@ -14,7 +14,7 @@ import { BRANDS, BRANDS_RESET } from './actionTypes.js';
  * Начальное состояние среза brands.
  * @type {BrandsState}
  */
-export const initialState = {
+const initialState = {
   status: STATUS.IDLE,
   query: null,
   items: [],

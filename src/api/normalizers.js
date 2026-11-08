@@ -38,7 +38,7 @@ const EMPTY_GOODS_ID = '00000000-0000-0000-0000-000000000000';
  * @param {object|null|undefined} item
  * @returns {boolean}
  */
-export function isEmptyItem(item) {
+function isEmptyItem(item) {
   if (!item) {
     return true;
   }

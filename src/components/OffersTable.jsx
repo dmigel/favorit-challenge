@@ -5,7 +5,7 @@ import PartRow from './PartRow.jsx';
  * Таблица позиций (искомая деталь или аналоги).
  * @extends {Component<{ items: import('../api/normalizers.js').Part[], caption: string }>}
  */
-export class OffersTable extends Component {
+class OffersTable extends Component {
   render() {
     const { items, caption } = this.props;
 

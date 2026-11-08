@@ -1,12 +1,13 @@
 import { Component, Fragment } from 'react';
 import { formatPrice } from '../utils/format.js';
+import StockBadge from './StockBadge.jsx';
 import WarehouseList from './WarehouseList.jsx';
 
 /**
  * Строка позиции в таблице предложений (с раскрываемым списком складов).
  * @extends {Component<{ part: import('../api/normalizers.js').Part }>}
  */
-export class PartRow extends Component {
+class PartRow extends Component {
   state = { expanded: false };
 
   /**
@@ -47,11 +48,7 @@ export class PartRow extends Component {
             {part.minPrice !== null ? `от ${formatPrice(part.minPrice)}` : '—'}
           </td>
           <td className="text-end" data-label="Остаток" role="cell">
-            {part.totalStock > 0 ? (
-              <span className="badge text-bg-success">{part.totalStock}</span>
-            ) : (
-              <span className="badge text-bg-secondary">Нет в наличии</span>
-            )}
+            <StockBadge stock={part.totalStock} />
           </td>
         </tr>
         {expanded ? (

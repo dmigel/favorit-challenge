@@ -1,3 +1,5 @@
+import { UNKNOWN_ERROR_MESSAGE } from '../utils/constants.js';
+
 /** Известные тексты ошибок API и их русские сообщения. */
 const API_ERROR_MESSAGES = {
   'Empty key!': 'Не указан ключ API',
@@ -60,7 +62,7 @@ export class ApiError extends Error {
         message = formatApiMessage(details);
         break;
       default:
-        message = 'Неизвестная ошибка';
+        message = UNKNOWN_ERROR_MESSAGE;
     }
 
     super(message);

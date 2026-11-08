@@ -1,4 +1,5 @@
 import { ApiError } from '../api/ApiError.js';
+import { UNKNOWN_ERROR_MESSAGE } from '../utils/constants.js';
 
 /**
  * Статусы асинхронных срезов состояния.
@@ -61,6 +62,6 @@ export function toSerializableError(error) {
 
   return {
     kind: 'unknown',
-    message: 'Неизвестная ошибка',
+    message: UNKNOWN_ERROR_MESSAGE,
   };
 }

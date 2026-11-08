@@ -112,17 +112,10 @@
  * Текст на поверхностях — светлый (var(--bs-body-color)); чёрный на сером не используем.
  */
 [data-bs-theme='dark'] {
-  /*--bs-body-bg: #1f2327;*/
   --bs-tertiary-bg: #2b3035;
   --bs-secondary-bg: #343a40;
   --bs-border-color: #495057;
   --bs-body-color: #dee2e6;
-}
-
-/* Шапка на поверхности tertiary вместо primary */
-[data-bs-theme='dark'] .app-navbar {
-  /*background-color: var(--bs-tertiary-bg);*/
-  /*border-bottom: 1px solid var(--bs-border-color);*/
 }
 
 /* Таблицы: фон и наведение на поверхностях темы */
