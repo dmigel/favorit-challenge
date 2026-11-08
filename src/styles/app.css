@@ -1,3 +1,8 @@
+/* Программный фокус на контейнере, не интерактивный элемент */
+#main-content:focus {
+  outline: none;
+}
+
 /* Видимые границы вместо почти прозрачных в Lux */
 :root {
   --bs-list-group-border-color: var(--bs-border-color);

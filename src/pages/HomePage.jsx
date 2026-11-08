@@ -1,10 +1,14 @@
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import AsyncView from '../components/AsyncView.jsx';
 import BrandList from '../components/BrandList.jsx';
 import SearchForm from '../components/SearchForm.jsx';
+import { selectBrandsItems } from '../features/brands/selectors.js';
 import { useBrands } from '../hooks/useBrands.js';
 import { useDebouncedCallback } from '../hooks/useDebouncedCallback.js';
+import { useDocumentTitle } from '../hooks/useDocumentTitle.js';
+import { STATUS } from '../store/helpers.js';
 import {
   MIN_SEARCH_LENGTH,
   SEARCH_DEBOUNCE_MS,
@@ -17,6 +21,11 @@ function HomePage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const number = (searchParams.get('number') ?? '').trim();
   const { status, error, isEmpty, retry } = useBrands(number);
+  const count = useSelector(selectBrandsItems).length;
+
+  useDocumentTitle(
+    number ? `Производители: ${number}` : 'Поиск по номеру детали',
+  );
 
   const debouncedSearch = useDebouncedCallback((value) => {
     const next = value.trim();
@@ -55,6 +64,13 @@ function HomePage() {
     }
   }
 
+  const announcement =
+    status === STATUS.SUCCEEDED && !isEmpty
+      ? `Найдено производителей: ${count}`
+      : status === STATUS.SUCCEEDED && isEmpty
+        ? 'Ничего не найдено'
+        : '';
+
   return (
     <>
       <h1 className="h2">Поиск по номеру детали</h1>
@@ -68,6 +84,10 @@ function HomePage() {
         onChange={debouncedSearch}
         hint={`Поиск запустится сам после паузы в вводе (от ${MIN_SEARCH_LENGTH} символов) или по кнопке «Найти»`}
       />
+
+      <div className="visually-hidden" aria-live="polite" aria-atomic="true">
+        {announcement}
+      </div>
 
       {number === '' ? (
         <p className="text-muted">

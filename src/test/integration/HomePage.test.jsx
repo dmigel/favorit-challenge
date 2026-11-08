@@ -138,7 +138,9 @@ describe('HomePage', () => {
     });
 
     await waitFor(() => {
-      expect(screen.getByText('Ничего не найдено')).toBeInTheDocument();
+      expect(
+        screen.getByRole('heading', { name: 'Ничего не найдено' }),
+      ).toBeInTheDocument();
     });
   });
 

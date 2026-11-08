@@ -36,7 +36,7 @@ function OffersResults({ requested, analogues }) {
         </section>
       ) : null}
 
-      <h2 className="h5 mt-4">Аналоги и предложения</h2>
+      <h2 className="h5 mt-4">Аналоги</h2>
 
       {totalCount === 0 ? (
         <EmptyState
@@ -53,7 +53,7 @@ function OffersResults({ requested, analogues }) {
             onInStockOnlyChange={setInStockOnly}
             onSortChange={setSort}
           />
-          <p className="text-muted small">
+          <p className="text-muted small" aria-live="polite" aria-atomic="true">
             Показано {items.length} из {filteredCount}
           </p>
           {filteredCount === 0 ? (

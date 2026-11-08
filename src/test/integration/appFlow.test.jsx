@@ -1,4 +1,4 @@
-import { screen, within } from '@testing-library/react';
+import { screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { http, HttpResponse } from 'msw';
 import { afterEach, describe, expect, it, vi } from 'vitest';
@@ -112,5 +112,50 @@ describe('appFlow', () => {
       ),
     ).toBeInTheDocument();
     expect(screen.getByRole('table', { name: 'Аналоги' })).toBeInTheDocument();
+  });
+
+  it('клавиатура и фокус при навигации', async () => {
+    const user = userEvent.setup();
+
+    renderWithProviders(<App />, { route: '/' });
+
+    await user.tab();
+    expect(screen.getByRole('link', { name: 'Перейти к содержимому' })).toHaveFocus();
+
+    await user.keyboard('{Enter}');
+    expect(screen.getByRole('main')).toHaveFocus();
+
+    await user.type(screen.getByLabelText('Номер детали'), '0189');
+
+    const brandNav = await screen.findByRole(
+      'navigation',
+      { name: 'Производители' },
+      { timeout: 2000 },
+    );
+    expect(
+      within(brandNav).getAllByRole('link', { name: BRAND_LINK_NAME }),
+    ).toHaveLength(4);
+
+    await user.click(within(brandNav).getByRole('link', { name: /ZEN/ }));
+
+    await waitFor(
+      () => {
+        expect(document.title).toContain('Аналоги: ZEN');
+      },
+      { timeout: 2000 },
+    );
+    expect(screen.getByRole('main')).toHaveFocus();
+
+    await user.click(
+      screen.getByRole('link', { name: '← К списку производителей' }),
+    );
+
+    await waitFor(
+      () => {
+        expect(document.title).toContain('Производители: 0189');
+      },
+      { timeout: 2000 },
+    );
+    expect(screen.getByRole('main')).toHaveFocus();
   });
 });

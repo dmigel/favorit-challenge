@@ -2,6 +2,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import AsyncView from '../components/AsyncView.jsx';
 import EmptyState from '../components/EmptyState.jsx';
 import OffersResults from '../components/OffersResults.jsx';
+import { useDocumentTitle } from '../hooks/useDocumentTitle.js';
 import { useOffers } from '../hooks/useOffers.js';
 import { buildSearchPath } from '../utils/routes.js';
 
@@ -15,6 +16,12 @@ function OffersPage() {
   const { status, error, isEmpty, requested, analogues, retry } = useOffers(
     number,
     brand,
+  );
+
+  useDocumentTitle(
+    number && brand
+      ? `Аналоги: ${brand} · ${number}`
+      : 'Аналоги и предложения',
   );
 
   return (
