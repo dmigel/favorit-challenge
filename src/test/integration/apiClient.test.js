@@ -13,7 +13,7 @@ describe('requestParts', () => {
     let capturedUrl;
 
     server.use(
-      http.get('*/api/hsprice', ({ request }) => {
+      http.get('*/hs/hsprice/', ({ request }) => {
         capturedUrl = new URL(request.url);
         return HttpResponse.json({
           goods: [
@@ -42,7 +42,7 @@ describe('requestParts', () => {
     let capturedNumber;
 
     server.use(
-      http.get('*/api/hsprice', ({ request }) => {
+      http.get('*/hs/hsprice/', ({ request }) => {
         const url = new URL(request.url);
         capturedNumber = url.searchParams.get('number');
         return HttpResponse.json({ goods: [] });
@@ -77,7 +77,7 @@ describe('requestParts', () => {
 
   it('при 200 с не-JSON бросает ApiError kind parse', async () => {
     server.use(
-      http.get('*/api/hsprice', () => HttpResponse.text('not-json')),
+      http.get('*/hs/hsprice/', () => HttpResponse.text('not-json')),
     );
 
     await expect(requestParts({ number: '0189' })).rejects.toMatchObject({

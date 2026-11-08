@@ -91,7 +91,7 @@ describe('appFlow', () => {
     const user = userEvent.setup();
 
     server.use(
-      http.get('*/api/hsprice', () => HttpResponse.error(), { once: true }),
+      http.get('*/hs/hsprice/', () => HttpResponse.error(), { once: true }),
     );
 
     renderWithProviders(<App />, {

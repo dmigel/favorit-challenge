@@ -66,7 +66,7 @@ describe('fetchBrands', () => {
 
   it('гонка: в state остаётся результат второго (быстрого) запроса', async () => {
     server.use(
-      http.get('*/api/hsprice', async ({ request }) => {
+      http.get('*/hs/hsprice/', async ({ request }) => {
         const number = new URL(request.url).searchParams.get('number');
         if (number === 'SLOW') {
           await delay(100);

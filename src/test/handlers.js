@@ -33,7 +33,7 @@ const EMPTY_NOT_FOUND = {
  * Общие MSW-обработчики API подбора запчастей.
  */
 export const handlers = [
-  http.get('*/api/hsprice', ({ request }) => {
+  http.get('*/hs/hsprice/', ({ request }) => {
     const url = new URL(request.url);
     const key = url.searchParams.get('key');
     const number = url.searchParams.get('number');

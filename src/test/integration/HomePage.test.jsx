@@ -113,7 +113,7 @@ describe('HomePage', () => {
     const user = userEvent.setup();
     server.use(
       http.get(
-        '*/api/hsprice',
+        '*/hs/hsprice/',
         () => HttpResponse.json({ error: 'Request quota exceeded!' }),
         { once: true },
       ),
